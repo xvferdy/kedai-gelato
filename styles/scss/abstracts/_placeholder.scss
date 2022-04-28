@@ -2,7 +2,7 @@
 @use "./mixins" as *;
 
 %section {
-  //   min-height: 100vh;
+  min-height: calc(100vh - 7rem);
   padding: 2.4rem 0;
   & > .title {
     max-width: $width-lg;

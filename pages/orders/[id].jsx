@@ -1,11 +1,11 @@
 function Order() {
   return (
-    <section>
+    <section className="orders">
       <div className="title">
         <h2>order page</h2>
         <small>details</small>
       </div>
-      <div className="container">
+      <div className="container orders__container">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
           necessitatibus ipsa veniam quo cum quos unde animi nostrum facilis?

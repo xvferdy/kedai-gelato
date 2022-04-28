@@ -1,0 +1,45 @@
+@use "../abstracts/" as *;
+
+.home {
+  &__container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+  }
+  &__product {
+    position: relative;
+
+    background-color: $color-background;
+    padding: 4rem;
+    padding-top: 17rem;
+    margin-top: calc(7rem * 2);
+    display: grid;
+    gap: 1rem;
+    text-align: center;
+    place-items: center;
+    color: white;
+    border-radius: 3rem;
+    &-image {
+      position: absolute;
+      top: -7rem;
+      left: calc(50% - 20rem / 2);
+      background-color: $color-background-variant;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: visible;
+      & > * {
+        transform: translateY(-60px);
+        transition: $transition;
+        transform-origin: center 700px;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    & :nth-last-child(1) {
+      margin-top: 2rem;
+    }
+  }
+}

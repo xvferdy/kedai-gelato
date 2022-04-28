@@ -6,7 +6,6 @@ main {
   gap: 2.4rem;
 
   padding-top: 7rem; // nav height
-  border: 3px solid #000;
 
   // MEDIA-QUERIES
   @include display(tab-port) {

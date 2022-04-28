@@ -2,12 +2,12 @@ import React from "react";
 
 function cart() {
   return (
-    <section>
+    <section className="cart">
       <div className="title">
         <h2>cart page</h2>
         <small>details</small>
       </div>
-      <div className="container">
+      <div className="container cart__container">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
           necessitatibus ipsa veniam quo cum quos unde animi nostrum facilis?

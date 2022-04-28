@@ -7,6 +7,7 @@
 - cek display ofnt block saaat sdh deploy, cek hard refresh
 
 **Hard**
+- failed contrass
 
 ## Timeline
 - main 28 apr
@@ -16,7 +17,7 @@
   - create general style: 8.25 - 9.27
 - main 29 apr
   - Nav component 12.19am - 1.19am
-  - Home page
+  - Home page 1.21am - 
 
 ## Bug
 

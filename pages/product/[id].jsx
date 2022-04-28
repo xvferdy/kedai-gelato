@@ -2,12 +2,12 @@ import React from "react";
 
 function Product() {
   return (
-    <section>
+    <section className="product">
       <div className="title">
         <h2>product page</h2>
         <small>details</small>
       </div>
-      <div className="container">
+      <div className="container product__container">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
           necessitatibus ipsa veniam quo cum quos unde animi nostrum facilis?

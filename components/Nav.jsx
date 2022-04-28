@@ -21,7 +21,7 @@ function Nav() {
         <Link href="/" passHref>
           <a className="nav__logo">
             <Image src="/assets/logo.png" alt="Logo" width={50} height={50} />
-            <h3>Kedai Gelato</h3>
+            <h2>Kedai Gelato</h2>
           </a>
         </Link>
 
@@ -46,7 +46,7 @@ function Nav() {
               max={10}
               sx={{
                 ".MuiBadge-badge": {
-                  fontSize: 11.3,
+                  fontSize: 12,
                   height: 15,
                   minWidth: 18,
                   backgroundColor: "#ffc743",
