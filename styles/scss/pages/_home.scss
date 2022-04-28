@@ -9,7 +9,6 @@
   }
   &__product {
     position: relative;
-
     background-color: $color-background;
     padding: 4rem;
     padding-top: 17rem;
@@ -40,6 +39,18 @@
     }
     & :nth-last-child(1) {
       margin-top: 2rem;
+    }
+  }
+
+  // MEDIA-QUERIES
+  @include display(tab-land) {
+    &__container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @include display(phone) {
+    &__container {
+      grid-template-columns: 1fr;
     }
   }
 }

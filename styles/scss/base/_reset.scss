@@ -52,4 +52,12 @@ img {
     background-color: $color-primary;
     color: $color-white;
   }
+
+  // MEDIA-QUERIES
+  @include display(phone) {
+    padding: 1rem 2rem;
+  }
+  @include display(sm-phone) {
+    font-size: 1.2rem;
+  }
 }

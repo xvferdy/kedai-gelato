@@ -17,7 +17,7 @@
   - create general style: 8.25 - 9.27
 - main 29 apr
   - Nav component 12.19am - 1.19am
-  - Home page 1.21am - 
+  - Home page 1.21am - 4.13am
 
 ## Bug
 
