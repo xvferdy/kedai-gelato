@@ -14,14 +14,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="home">
+      <section id="home" className="home">
         <div className="title">
           <h1>Kedai Gelato</h1>
           <small>100% Natural</small>
           <h2>Products</h2>
         </div>
         <div className="container home__container">
-          {[...Array(3)].map((product) => (
+          {[...Array(2)].map((product) => (
             <div className="home__product">
               <div className="home__product-image">
                 <Image
@@ -45,6 +45,23 @@ export default function Home() {
               </Link>
             </div>
           ))}
+          <div className="home__product">
+            <div className="home__product-image">
+              <Image
+                src="/assets/pr1.png"
+                width={200}
+                height={280}
+                alt="Ice Cream"
+              />
+            </div>
+            <h3>Ice Cream</h3>
+            <span>⭒ ⭒ ⭒</span>
+            <h3>Oreo Ice cream</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <Link href="/product/1" passHref>
+              <a className="btn btn--primary">See Details</a>
+            </Link>
+          </div>
         </div>
       </section>
     </>
