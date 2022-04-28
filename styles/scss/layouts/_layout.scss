@@ -1,0 +1,30 @@
+@use "../abstracts/" as *;
+
+main {
+  margin: 0 auto;
+  display: grid;
+  gap: 2.4rem;
+
+  // MEDIA-QUERIES
+  @include display(tab-port) {
+    gap: 2rem;
+  }
+  @include display(phone) {
+    gap: 1rem;
+  }
+}
+
+section {
+  @extend %section;
+  //   padding-top: 0.6rem; // main gap & nav height
+
+  // MEDIA-QUERIES
+  @include display(tab-port) {
+  }
+  @include display(phone) {
+  }
+}
+
+section .container {
+  @extend %container;
+}

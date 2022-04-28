@@ -1,0 +1,17 @@
+@use "../abstracts/" as *;
+
+p {
+  font-weight: map-get($font-weights, light);
+}
+a {
+}
+h1 {
+}
+h2 {
+}
+h3 {
+  font-weight: map-get($font-weights, regular);
+}
+small {
+  font-weight: map-get($font-weights, thin);
+}

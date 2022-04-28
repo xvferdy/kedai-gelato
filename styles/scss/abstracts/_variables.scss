@@ -1,0 +1,30 @@
+/* === COLORS === */
+$color-background: #ffb7cb;
+$color-background-variant: #fea5b9;
+$color-primary: #d11541;
+$color-primary-variant: #ffc743;
+
+$color-mocha: #f0d1a5;
+$color-greentea: #c2e297;
+$color-white: #fafafa;
+$color-light: rgba(255, 255, 255, 0.6);
+$theme-colors: (
+  "primary": $color-primary,
+);
+
+/* === FONTS === */
+// @import url("https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap");
+$font-weights: (
+  "thin": 100,
+  "light": 300,
+  "regular": 400,
+  "black": 900,
+);
+$font-primary: "Londrina Solid", cursive;
+
+/* === CONTAINERS === */
+$width-lg: 75%;
+$width-md: 86%;
+$width-sm: 90%;
+
+/* === TRANSITIONS === */

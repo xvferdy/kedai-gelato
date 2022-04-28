@@ -1,0 +1,16 @@
+// ■━■━■━■ base ■━■━■━■
+@use "./base/reset";
+@use "./base/typography";
+
+// ■━■━■━■ components ■━■━■━■
+
+// ■━■━■━■ pages ■━■━■━■
+@use "./pages/cart";
+@use "./pages/home";
+@use "./pages/orders";
+@use "./pages/product";
+
+// ■━■━■━■ layout ■━■━■━■
+@use "./layouts/layout";
+@use "./layouts/nav";
+@use "./layouts/footer";
