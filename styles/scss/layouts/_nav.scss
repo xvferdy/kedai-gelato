@@ -1,15 +1,16 @@
 @use "../abstracts/" as *;
 
 .nav {
-  height: 5rem;
+  height: 7rem;
   background-color: rgba($color-white, 0.8);
   backdrop-filter: blur(15px);
   position: fixed;
   width: 100%;
   z-index: 5;
+
   &__container {
     @extend %container;
-    border: 1px solid #000;
+    // border: 1px solid #000;
     height: 100%;
     display: flex;
     align-items: center;
@@ -44,8 +45,10 @@
   &__cart {
     flex-grow: 1;
     text-align: end;
-    > a {
+    transform: translateX(-11px);
+    a {
       cursor: pointer;
+      transform: scale(1.5);
     }
   }
   // MEDIA-QUERIES

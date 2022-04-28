@@ -5,6 +5,9 @@ import Image from "next/image";
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
+// react-icons
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
 function Nav() {
   return (
     <nav className="nav">
@@ -38,11 +41,24 @@ function Nav() {
         {/* CART */}
         <Link href="#" passHref>
           <div className="nav__cart">
-            <a>
-              <Badge badgeContent={4} color="primary">
-                <ShoppingCartIcon color="action" />
-              </Badge>
-            </a>
+            <Badge
+              badgeContent={4}
+              max={10}
+              sx={{
+                ".MuiBadge-badge": {
+                  fontSize: 11.3,
+                  height: 15,
+                  minWidth: 18,
+                  backgroundColor: "#ffc743",
+                  cursor: "pointer",
+                  right: -3,
+                },
+              }}
+            >
+              <a>
+                <AiOutlineShoppingCart />
+              </a>
+            </Badge>
           </div>
         </Link>
       </div>
