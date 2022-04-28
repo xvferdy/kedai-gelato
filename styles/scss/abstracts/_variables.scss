@@ -8,6 +8,7 @@ $color-mocha: #f0d1a5;
 $color-greentea: #c2e297;
 $color-white: #fafafa;
 $color-light: rgba(255, 255, 255, 0.6);
+$color-black: rgb(20, 20, 20);
 $theme-colors: (
   "primary": $color-primary,
 );
@@ -28,3 +29,4 @@ $width-md: 86%;
 $width-sm: 90%;
 
 /* === TRANSITIONS === */
+$transition: 0.3s all ease;

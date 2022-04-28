@@ -14,6 +14,8 @@
   - folder structure 6.59pm: - 7.08pm
   - import style: 7.09pm - 8.23pm
   - create general style: 8.25 - 9.27
+- main 29 apr
+  - nav component
 
 ## Bug
 
