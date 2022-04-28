@@ -7,15 +7,12 @@
   position: fixed;
   width: 100%;
   z-index: 5;
-
   &__container {
     @extend %container;
-    // border: 1px solid #000;
     height: 100%;
     display: flex;
     align-items: center;
     gap: 4rem;
-    // justify-content: space-between;
   }
   &__hamburger-icon {
     display: none;
@@ -36,11 +33,10 @@
   &__logo {
     display: flex;
     align-items: center;
-    // border: 1px solid #000;
   }
   &__list {
     display: flex;
-    gap: 1rem;
+    gap: 1.8rem;
   }
   &__cart {
     flex-grow: 1;
@@ -57,5 +53,8 @@
   @include display(tab-port) {
   }
   @include display(phone) {
+    &__logo {
+      display: none;
+    }
   }
 }
