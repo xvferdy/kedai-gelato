@@ -18,7 +18,7 @@ function Nav() {
         </button>
 
         {/* LOGO */}
-        <Link href="#" passHref>
+        <Link href="/" passHref>
           <a className="nav__logo">
             <Image src="/assets/logo.png" alt="Logo" width={50} height={50} />
             <h3>Kedai Gelato</h3>
@@ -28,18 +28,18 @@ function Nav() {
         {/* LIST */}
         <ul className="nav__list">
           <li>
-            <Link href="#homepage" passHref>
+            <Link href="/" passHref>
               <a>Homepage</a>
             </Link>
           </li>
           <li>
-            <Link href="#orders" passHref>
+            <Link href="/orders/1" passHref>
               <a>Orders</a>
             </Link>
           </li>
         </ul>
         {/* CART */}
-        <Link href="#" passHref>
+        <Link href="/cart" passHref>
           <div className="nav__cart">
             <Badge
               badgeContent={4}

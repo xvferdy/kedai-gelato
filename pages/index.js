@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Nav from "../components/Nav";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,98 +14,27 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="main">
-        <h1>home</h1>
-
-        <section>
-          <div className="title">
-            <h2>cart page</h2>
-            <small>details</small>
-          </div>
-          <div className="container">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatibus necessitatibus ipsa veniam quo cum quos unde animi
-              nostrum facilis? Iure sunt dolorem assumenda, non vel vero tempore
-              et voluptates repudiandae.
-            </p>
-            <h3>Oreo Ice cream</h3>
-            <small>Origin</small>
-            <button>Click</button>
-            <a href="">CTA</a>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Nesciunt, earum!
-            </p>
-          </div>
-        </section>
-        <section>
-          <div className="title">
-            <h2>cart page</h2>
-            <small>details</small>
-          </div>
-          <div className="container">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatibus necessitatibus ipsa veniam quo cum quos unde animi
-              nostrum facilis? Iure sunt dolorem assumenda, non vel vero tempore
-              et voluptates repudiandae.
-            </p>
-            <h3>Oreo Ice cream</h3>
-            <small>Origin</small>
-            <button>Click</button>
-            <a href="">CTA</a>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Nesciunt, earum!
-            </p>
-          </div>
-        </section>
-        <section>
-          <div className="title">
-            <h2>cart page</h2>
-            <small>details</small>
-          </div>
-          <div className="container">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatibus necessitatibus ipsa veniam quo cum quos unde animi
-              nostrum facilis? Iure sunt dolorem assumenda, non vel vero tempore
-              et voluptates repudiandae.
-            </p>
-            <h3>Oreo Ice cream</h3>
-            <small>Origin</small>
-            <button>Click</button>
-            <a href="">CTA</a>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Nesciunt, earum!
-            </p>
-          </div>
-        </section>
-        <section>
-          <div className="title">
-            <h2>cart page</h2>
-            <small>details</small>
-          </div>
-          <div className="container">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatibus necessitatibus ipsa veniam quo cum quos unde animi
-              nostrum facilis? Iure sunt dolorem assumenda, non vel vero tempore
-              et voluptates repudiandae.
-            </p>
-            <h3>Oreo Ice cream</h3>
-            <small>Origin</small>
-            <button>Click</button>
-            <a href="">CTA</a>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Nesciunt, earum!
-            </p>
-          </div>
-        </section>
-      </main>
+      <section>
+        <div className="title">
+          <h1>Kedai Gelato</h1>
+          <small>100% Natural</small>
+          <h2>Products</h2>
+        </div>
+        <div className="container">
+          <h3>Ice Cream</h3>
+          <span>✪ ✪ ✪</span>
+          <h3>Oreo Ice cream</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Voluptatibus necessitatibus ipsa veniam quo cum quos unde animi
+            nostrum facilis? Iure sunt dolorem assumenda, non vel vero tempore
+            et voluptates repudiandae.
+          </p>
+          <Link href="/product/1" passHref>
+            <a>See Details</a>
+          </Link>
+        </div>
+      </section>
     </>
   );
 }
