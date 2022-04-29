@@ -13,10 +13,16 @@
   }
   &__showcase {
     // border: 1px solid #000;
-    // padding: 0 2.4rem;
+
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    & > * {
+      transform: translateX(-40px);
+    }
   }
   &__details {
-    // border: 1px solid #000;
+    // border: 1px solid rgb(122, 4, 4);
     padding: 0 8.4rem;
     color: $color-grey;
     // background-color: rgb(146, 58, 58);
@@ -58,7 +64,6 @@
         }
       }
     }
-
     &-toppings {
       display: grid;
       gap: 0.7rem;
@@ -79,6 +84,78 @@
         input {
           padding: 1.5rem;
           background-color: darken($color-light, 3%);
+        }
+      }
+    }
+  }
+
+  // MEDIA-QUERIES
+  @include display(tab-land) {
+    &__details {
+      padding: 0 2.4rem;
+    }
+  }
+  @include display(phone) {
+    background: linear-gradient(
+      180deg,
+      darken($color-light, 5%) 25%,
+      transparent 50%
+    );
+    &__container {
+      grid-template-columns: 1fr;
+      gap: 2.4rem;
+    }
+    &__showcase {
+      // border: 1px solid #000;
+      & > * {
+        transform: translateX(0);
+      }
+    }
+
+    &__details {
+      // border: 1px solid #000;
+      align-items: center;
+      // text-align: center;
+      &-description {
+        text-align: center;
+      }
+      &-size {
+        p {
+          text-align: center;
+        }
+        .size-list {
+          gap: 4rem;
+          & > *:nth-child(1),
+          *:nth-child(2),
+          *:nth-child(3) {
+            .size-icon {
+              font-size: 3rem;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      &-toppings {
+        form {
+          display: flex;
+          flex-direction: column;
+          // border: 1px solid #000;
+
+          gap: 1.2rem;
+        }
+      }
+      &-quantity {
+        p {
+          display: none;
+        }
+        form {
+          input {
+            padding: 1.5rem;
+            max-width: 20rem;
+            &::placeholder {
+              color: lightgray;
+            }
+          }
         }
       }
     }

@@ -107,7 +107,7 @@ function Product() {
           <div className="product__details-quantity">
             <p>Quantity</p>
             <form autoComplete="off" style={{ display: "inline" }}>
-              <input type="number" />
+              <input type="number" placeholder="Ex: 2" />
             </form>
           </div>
 
