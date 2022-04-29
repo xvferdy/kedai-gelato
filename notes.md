@@ -6,6 +6,7 @@
 - perbaiki meta tag
 - cek display ofnt block saaat sdh deploy, cek hard refresh
 - footer phone responsive
+- new logo
 
 **Hard**
 - failed contrass
@@ -21,6 +22,7 @@
 - main 29 apr
   - Nav component 12.19am - 1.19am
   - Home page 1.21am - 4.13am
+  - Product/id page: 7.41pm - 
 
 ## Bug
 
