@@ -58,4 +58,39 @@
       gap: 0.5rem;
     }
   }
+
+  // MEDIA-QUERIES
+  @include display(tab-land) {
+    &__details {
+      &-header {
+        // border: 1px solid #000;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        color: $color-grey;
+        justify-items: center;
+        .header-topping,
+        .header-price {
+          display: none;
+        }
+      }
+      &-item {
+        // border: 1px solid #000;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        .item-topping,
+        .item-price {
+          display: none;
+          border: 1px solid #000;
+        }
+      }
+    }
+  }
+  @include display(phone) {
+    background: transparent;
+    &__container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+  }
 }

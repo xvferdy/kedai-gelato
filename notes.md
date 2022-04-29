@@ -10,6 +10,7 @@
 - format price decima
 - typography group style
 - size icon change
+- remove item cart dispatch
 
 **Hard**
 - failed contrass

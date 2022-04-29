@@ -14,8 +14,8 @@ function cart() {
           <div className="cart__details-header">
             <small>Img</small>
             <small>Name</small>
-            <small>Toppings</small>
-            <small>Price</small>
+            <small className="header-topping">Toppings</small>
+            <small className="header-price">Price</small>
             <small>Qty</small>
             <small>Total</small>
           </div>
@@ -91,7 +91,7 @@ function cart() {
         <div className="cart__payments">
           <div>
             <h2>Cart Total: $900</h2>
-            <small>Shipping & taxes calculated at checkout</small>
+            <span>Shipping & taxes calculated at checkout</span>
           </div>
           <button className="btn btn--primary">
             <MdOutlineShoppingBasket /> Checkout
