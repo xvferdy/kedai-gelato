@@ -1,0 +1,22 @@
+@use "../abstracts/" as *;
+
+.cart {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 40%,
+    darken($color-light, 5%) 60%
+  );
+  &__container {
+    display: grid;
+    grid-template-columns: 68% 28%;
+    gap: 4%;
+  }
+  &__details {
+    border: 1px solid #000;
+  }
+  &__payments {
+    border: 1px solid #000;
+    // position: sticky;
+  }
+}

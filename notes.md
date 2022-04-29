@@ -9,11 +9,15 @@
 - new logo
 - format price decima
 - typography group style
+- size icon change
 
 **Hard**
 - failed contrass
 - firefox scroll restore bug (firefox)
 - ngload
+- input radion on size
+- drop shadow product
+- ganti pr1 krn size tidak sesuai
 
 ## Timeline
 - main 28 apr
@@ -24,7 +28,9 @@
 - main 29 apr
   - Nav component 12.19am - 1.19am
   - Home page 1.21am - 4.13am
-  - Product/id page: 7.41pm - 
+  - Product/id page: 7.41pm - 11.05pm
+- main 30 apr
+  - Cart page 12.00am - 
 
 ## Bug
 

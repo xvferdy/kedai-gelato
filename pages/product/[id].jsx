@@ -87,7 +87,7 @@ function Product() {
           </div>
 
           <div className="product__details-toppings">
-            <p>Another topping</p>
+            <p>Additional topping</p>
             <form autoComplete="off">
               <div>
                 <input type="checkbox" id="d" name="sdsd" className="sdsd" />
