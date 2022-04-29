@@ -50,7 +50,7 @@ function Nav() {
                   height: 15,
                   minWidth: 18,
                   backgroundColor: "#ffc743",
-                  cursor: "pointer",
+                  cursor: "default",
                   right: -3,
                 },
               }}

@@ -7,6 +7,8 @@
 - cek display ofnt block saaat sdh deploy, cek hard refresh
 - footer phone responsive
 - new logo
+- format price decima
+- typography group style
 
 **Hard**
 - failed contrass
