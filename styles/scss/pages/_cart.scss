@@ -13,10 +13,49 @@
     gap: 4%;
   }
   &__details {
-    border: 1px solid #000;
+    // border: 1px solid #000;
+    display: grid;
+    gap: 4rem;
+    color: $color-black;
+    &-header {
+      // border: 1px solid #000;
+      display: grid;
+      grid-template-columns: 15% 19% 35% 10% 6% 15%;
+      color: $color-grey;
+      justify-items: center;
+    }
+    &-item {
+      // border: 1px solid #000;
+      display: grid;
+      grid-template-columns: 15% 19% 35% 10% 6% 15%;
+      // gap: 1%;
+      & > * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
   &__payments {
-    border: 1px solid #000;
-    // position: sticky;
+    // background-color: $color-background-variant;
+    border: 5px dashed $color-light-variant;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 5.7rem 2.4rem;
+    text-align: center;
+    color: $color-black;
+
+    h2 {
+      color: $color-primary-variant;
+    }
+    button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
   }
 }

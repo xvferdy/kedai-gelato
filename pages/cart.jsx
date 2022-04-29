@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { SiZcash } from "react-icons/si";
+import { MdOutlineShoppingBasket } from "react-icons/md";
 
 function cart() {
   return (
@@ -12,14 +12,14 @@ function cart() {
       <div className="container cart__container">
         <div className="cart__details">
           <div className="cart__details-header">
-            <span>Image</span>
-            <span>Name</span>
-            <span>Toppings</span>
-            <span>Price</span>
-            <span>Quantity</span>
-            <span>Total</span>
+            <small>Img</small>
+            <small>Name</small>
+            <small>Toppings</small>
+            <small>Price</small>
+            <small>Qty</small>
+            <small>Total</small>
           </div>
-          <div className="art__details-item">
+          <div className="cart__details-item">
             <div className="item-image">
               <Image
                 src="/assets/pr2.png"
@@ -36,7 +36,7 @@ function cart() {
             <span className="item-quantity">2</span>
             <span className="item-total">$345</span>
           </div>
-          <div className="art__details-item">
+          <div className="cart__details-item">
             <div className="item-image">
               <Image
                 src="/assets/pr2.png"
@@ -49,16 +49,52 @@ function cart() {
             <div className="item-topping">
               <span>Strawberry Ice, Neon flavour</span>
             </div>
-            <span className="item-price">$123</span>
-            <span className="item-quantity">2</span>
-            <span className="item-total">$345</span>
+            <span className="item-price">$12.345</span>
+            <span className="item-quantity">200</span>
+            <span className="item-total">$3.450.000</span>
+          </div>
+          <div className="cart__details-item">
+            <div className="item-image">
+              <Image
+                src="/assets/pr2.png"
+                width={100}
+                height={100}
+                alt="name"
+              />
+            </div>
+            <span className="item-name">Oereuo Tou Luv</span>
+            <div className="item-topping">
+              <span>Strawberry Ice, Neon flavour</span>
+            </div>
+            <span className="item-price">$12.345</span>
+            <span className="item-quantity">200</span>
+            <span className="item-total">$3.450.000</span>
+          </div>
+          <div className="cart__details-item">
+            <div className="item-image">
+              <Image
+                src="/assets/pr6.png"
+                width={100}
+                height={100}
+                alt="name"
+              />
+            </div>
+            <span className="item-name">Oereuo Tou Luv</span>
+            <div className="item-topping">
+              <span>Strawberry Ice, Neon flavour</span>
+            </div>
+            <span className="item-price">$12.345</span>
+            <span className="item-quantity">200</span>
+            <span className="item-total">$3.450.000</span>
           </div>
         </div>
         <div className="cart__payments">
-          <p>Cart Total: $900</p>
-          <small>Shipping & taxes calculated at checkout</small>
+          <div>
+            <h2>Cart Total: $900</h2>
+            <small>Shipping & taxes calculated at checkout</small>
+          </div>
           <button className="btn btn--primary">
-            <SiZcash /> Checkout
+            <MdOutlineShoppingBasket /> Checkout
           </button>
         </div>
       </div>
