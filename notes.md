@@ -19,6 +19,8 @@
 - input radion on size
 - drop shadow product
 - ganti pr1 krn size tidak sesuai
+- no cart list ui
+- no order ui
 
 ## Timeline
 - main 28 apr
@@ -31,7 +33,8 @@
   - Home page 1.21am - 4.13am
   - Product/id page: 7.41pm - 11.05pm
 - main 30 apr
-  - Cart page 12.00am - 
+  - Cart page 12.00am - 1.33am
+  - Order page 1.37am - 2.52am
 
 ## Bug
 

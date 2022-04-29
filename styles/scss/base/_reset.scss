@@ -53,6 +53,10 @@ img {
     background-color: $color-primary;
     color: $color-white;
   }
+  &--paid {
+    background-color: darken($color-greentea, 15%);
+    color: $color-white;
+  }
 
   // MEDIA-QUERIES
   @include display(phone) {
