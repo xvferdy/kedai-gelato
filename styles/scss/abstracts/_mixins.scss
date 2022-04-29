@@ -28,3 +28,11 @@
     }
   }
 }
+
+/* === PRODUCT BG === */
+@mixin product-scheme($color) {
+  background-color: $color;
+  .home__product-image {
+    background: darken($color, 5%);
+  }
+}

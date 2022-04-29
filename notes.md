@@ -5,9 +5,12 @@
 - `clamp()`
 - perbaiki meta tag
 - cek display ofnt block saaat sdh deploy, cek hard refresh
+- footer phone responsive
 
 **Hard**
 - failed contrass
+- firefox scroll restore bug (firefox)
+- ngload
 
 ## Timeline
 - main 28 apr

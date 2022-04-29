@@ -5,11 +5,11 @@
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
-    // place-items: center;
   }
   &__product {
+    @include product-scheme($color-background);
     position: relative;
-    background-color: $color-background;
+
     padding: 4rem;
     padding-top: 17rem;
     margin-top: calc(7rem * 2);
@@ -21,11 +21,12 @@
     align-items: center;
     gap: 1rem;
     user-select: none;
+
     &-image {
       position: absolute;
       top: -7rem;
       left: calc(50% - 20rem / 2);
-      background-color: $color-background-variant;
+
       width: 200px;
       height: 200px;
       border-radius: 50%;
@@ -45,12 +46,19 @@
     & :nth-last-child(1) {
       margin-top: 2rem;
     }
+    &--mocha {
+      @include product-scheme($color-mocha);
+    }
+    &--greentea {
+      @include product-scheme($color-greentea);
+    }
   }
 
   // MEDIA-QUERIES
   @include display(tab-land) {
     &__container {
       grid-template-columns: 1fr 1fr;
+      padding: 0;
     }
   }
   @include display(phone) {

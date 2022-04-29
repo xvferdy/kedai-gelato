@@ -28,7 +28,7 @@ function Nav() {
         {/* LIST */}
         <ul className="nav__list">
           <li>
-            <Link href="/#home" passHref>
+            <Link href="/" passHref>
               <a>Homepage</a>
             </Link>
           </li>

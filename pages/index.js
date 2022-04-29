@@ -4,6 +4,21 @@ import Nav from "../components/Nav";
 import Link from "next/link";
 
 export default function Home() {
+  const dummyProducts = [
+    {
+      name: "oreo",
+      desc: " Lorem ipsum dolor sit amet consectetur at consectetur  t consectetur  t consectetur dipisicing el  Lorem ipsum dolor sit amet consectetur adipisicing el",
+    },
+    {
+      name: "mocha",
+      desc: " Lorem ipsumsectetur adipisicing el",
+    },
+    {
+      name: "greentea",
+      desc: " Lorem ipsum dolor s ipsum dolor sit amet consectetur adipisicing el",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -21,8 +36,8 @@ export default function Home() {
           <h2>Products</h2>
         </div>
         <div className="container home__container">
-          {[...Array(2)].map((product) => (
-            <div className="home__product">
+          {dummyProducts.map((product) => (
+            <div className={`home__product home__product--${product.name}`}>
               <div className="home__product-image">
                 <Image
                   src="/assets/pr1.png"
@@ -31,37 +46,14 @@ export default function Home() {
                   alt="Ice Cream"
                 />
               </div>
-              <h3>Ice Cream</h3>
+              <h3>{product.name}</h3>
               <span>⭒ ⭒ ⭒</span>
-              <h3>Oreo Ice cream</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatibus necessitatibus ipsa veniam quo cum quos unde animi
-                nostrum facilis? Iure sunt dolorem assumenda, non vel vero
-                tempore et voluptates repudiandae.
-              </p>
+              <p>{product.desc}</p>
               <Link href="/product/1" passHref>
                 <a className="btn btn--primary">See Details</a>
               </Link>
             </div>
           ))}
-          <div className="home__product">
-            <div className="home__product-image">
-              <Image
-                src="/assets/pr1.png"
-                width={200}
-                height={280}
-                alt="Ice Cream"
-              />
-            </div>
-            <h3>Ice Cream</h3>
-            <span>⭒ ⭒ ⭒</span>
-            <h3>Oreo Ice cream</h3>
-            <p>Lorem ipsum dolor sit amet.</p>
-            <Link href="/product/1" passHref>
-              <a className="btn btn--primary">See Details</a>
-            </Link>
-          </div>
         </div>
       </section>
     </>
