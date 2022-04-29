@@ -10,6 +10,11 @@
     margin: 0 auto;
     text-align: center;
     padding-bottom: 2.4rem;
+    p {
+      color: $color-primary-variant;
+      font-size: 1.9rem;
+      font-weight: map-get($font-weights, regular);
+    }
   }
 
   // MEDIA-QUERIES

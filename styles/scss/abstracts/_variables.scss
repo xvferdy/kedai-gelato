@@ -1,18 +1,20 @@
 /* === COLORS === */
-$color-background: #ffb7cb;
+$color-background: hsl(343, 100%, 86%);
 // $color-background-variant: #fea5b9;
 
 $color-primary: #d11541;
-$color-primary-variant: #ffc743;
+$color-primary-variant: hsl(42, 100%, 49%);
 
-$color-mocha: #f0d1a5;
-$color-greentea: #c2e297;
+$color-mocha: hsl(35, 71%, 79%);
+$color-greentea: hsl(86, 56%, 74%);
 $color-white: #fff;
 $color-light: #fafafa;
 $color-light-variant: rgba(255, 255, 255, 0.6);
 $color-black: rgb(20, 20, 20);
 $theme-colors: (
-  "primary": $color-primary,
+  "original": $color-background,
+  "nature": $color-greentea,
+  "coffee": $color-mocha,
 );
 
 /* === FONTS === */

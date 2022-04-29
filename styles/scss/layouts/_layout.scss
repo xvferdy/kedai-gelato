@@ -16,7 +16,8 @@ main {
 
 section {
   @extend %section;
-  padding-top: calc(7rem + 6rem); // nav height
+  padding: calc(7rem + 6rem) 0; // nav height + your choice px/rem value
+
   // MEDIA-QUERIES
   @include display(tab-port) {
   }
