@@ -32,7 +32,24 @@ function Order() {
 
           <div className="order__details-process">
             <div className="order-status-1">
-              <Image src="/assets/paid.png" width={30} height={30} alt="" />
+              <Image
+                src="/assets/cash-payment.png"
+                width={30}
+                height={30}
+                alt=""
+              />
+              <span>Payment</span>
+              <div>
+                <Image
+                  src="/assets/checked.png"
+                  width={20}
+                  height={20}
+                  alt=""
+                />
+              </div>
+            </div>
+            <div className="order-status-1">
+              <Image src="/assets/salad.png" width={30} height={30} alt="" />
               <span>Preparing</span>
               <div>
                 <Image
@@ -44,20 +61,13 @@ function Order() {
               </div>
             </div>
             <div className="order-status-1">
-              <Image src="/assets/bake.png" width={30} height={30} alt="" />
-              <span>Preparing</span>
-              <div>
-                <Image
-                  src="/assets/checked.png"
-                  width={20}
-                  height={20}
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className="order-status-1">
-              <Image src="/assets/bike.png" width={30} height={30} alt="" />
-              <span>Preparing</span>
+              <Image
+                src="/assets/delivery-courier.png"
+                width={30}
+                height={30}
+                alt=""
+              />
+              <span>On The Way</span>
               <div>
                 <Image
                   src="/assets/checked.png"
@@ -74,7 +84,7 @@ function Order() {
                 height={30}
                 alt=""
               />
-              <span>Preparing</span>
+              <span>Delivered</span>
               <div>
                 <Image
                   src="/assets/checked.png"
@@ -90,7 +100,8 @@ function Order() {
           <div>
             <h2>Total Paid: $900</h2>
             <span>
-              Thank you for ordering our product, we'll be there in a year!
+              Thank you for ordering our product, we'll be there in the blink of
+              the eye!
             </span>
           </div>
           <button className="btn btn--paid">

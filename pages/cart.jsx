@@ -1,6 +1,12 @@
 import Image from "next/image";
 
 import { MdOutlineShoppingBasket } from "react-icons/md";
+import { BsTrash } from "react-icons/bs";
+import { FiTruck } from "react-icons/fi";
+
+// mui
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
 
 function cart() {
   return (
@@ -18,7 +24,9 @@ function cart() {
             <small className="header-price">Price</small>
             <small>Qty</small>
             <small>Total</small>
+            <small>Remove</small>
           </div>
+
           <div className="cart__details-item">
             <div className="item-image">
               <Image
@@ -30,11 +38,21 @@ function cart() {
             </div>
             <span className="item-name">Oereuo Tou Luv</span>
             <div className="item-topping">
-              <small>No topping</small>
+              <span>Strawberry Ice, Neon flavour</span>
             </div>
-            <span className="item-price">$123</span>
-            <span className="item-quantity">2</span>
-            <span className="item-total">$345</span>
+            <span className="item-price">$12.345</span>
+            <span className="item-quantity">200</span>
+            <span className="item-total">$3.450.000</span>
+            <Tooltip
+              title={<small style={{ color: "#fff" }}>Remove</small>}
+              placement="top"
+              disableRipple
+              className="delete"
+            >
+              <IconButton>
+                <BsTrash />
+              </IconButton>
+            </Tooltip>
           </div>
           <div className="cart__details-item">
             <div className="item-image">
@@ -52,23 +70,16 @@ function cart() {
             <span className="item-price">$12.345</span>
             <span className="item-quantity">200</span>
             <span className="item-total">$3.450.000</span>
-          </div>
-          <div className="cart__details-item">
-            <div className="item-image">
-              <Image
-                src="/assets/pr2.png"
-                width={100}
-                height={100}
-                alt="name"
-              />
-            </div>
-            <span className="item-name">Oereuo Tou Luv</span>
-            <div className="item-topping">
-              <span>Strawberry Ice, Neon flavour</span>
-            </div>
-            <span className="item-price">$12.345</span>
-            <span className="item-quantity">200</span>
-            <span className="item-total">$3.450.000</span>
+            <Tooltip
+              title={<small style={{ color: "#fff" }}>Remove</small>}
+              placement="top"
+              disableRipple
+              className="delete"
+            >
+              <IconButton>
+                <BsTrash />
+              </IconButton>
+            </Tooltip>
           </div>
           <div className="cart__details-item">
             <div className="item-image">
@@ -86,6 +97,16 @@ function cart() {
             <span className="item-price">$12.345</span>
             <span className="item-quantity">200</span>
             <span className="item-total">$3.450.000</span>
+            <Tooltip
+              title={<small style={{ color: "#fff" }}>Remove</small>}
+              placement="top"
+              disableRipple
+              className="delete"
+            >
+              <IconButton>
+                <BsTrash />
+              </IconButton>
+            </Tooltip>
           </div>
         </div>
         <div className="cart__payments">
@@ -94,7 +115,10 @@ function cart() {
             <span>Shipping & taxes calculated at checkout</span>
           </div>
           <button className="btn btn--primary">
-            <MdOutlineShoppingBasket /> Checkout
+            <MdOutlineShoppingBasket className="icon" /> Checkout
+          </button>
+          <button className="btn btn--primary">
+            Cash On Delivery <FiTruck className="icon" />
           </button>
         </div>
       </div>

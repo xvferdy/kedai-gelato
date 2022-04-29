@@ -17,7 +17,7 @@
 - firefox scroll restore bug (firefox)
 - ngload
 - input radion on size
-- drop shadow product
+- drop shadow product, cart, product, ect
 - ganti pr1 krn size tidak sesuai
 - no cart list ui
 - no order ui
@@ -41,3 +41,4 @@
 ## Learned
 
 ## Others
+- credit freepik,Pixel perfect
