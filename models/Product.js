@@ -12,6 +12,11 @@ const ProductSchema = new mongoose.Schema(
       required: true,
       maxlength: 200,
     },
+    class: {
+      type: String,
+      required: true,
+      maxlength: 20,
+    },
     img: {
       type: String,
       required: true,
@@ -25,7 +30,7 @@ const ProductSchema = new mongoose.Schema(
       ],
       required: true,
     },
-    extraOptions: {
+    extraTopping: {
       type: [
         {
           text: { type: String, required: true },

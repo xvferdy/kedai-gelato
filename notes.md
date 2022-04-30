@@ -12,6 +12,8 @@
 - size icon change
 - remove item cart dispatch
 - uninstall material icon
+- ganti assets semua product gelato
+- title product touppercase
 
 **Hard**
 - failed contrass
@@ -36,6 +38,9 @@
 - main 30 apr
   - Cart page 12.00am - 1.33am
   - Order page 1.37am - 2.52am
+- dev 30 apr
+  - simple rest setup 6.11pm - 8.01pm
+  - 
 
 ## Bug
 

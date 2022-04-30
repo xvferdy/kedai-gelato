@@ -3,28 +3,28 @@ import Image from "next/image";
 import Nav from "../components/Nav";
 import Link from "next/link";
 
-export default function Home() {
-  const dummyProducts = [
-    {
-      img: "/assets/pr4.png",
-      type: "original",
-      name: "DAIFUKU CORNETTO",
-      desc: " Lorem ipsum dolor sit amet consectetur at consectetur  t consectetur  t consectetur dipisicing el  Lorem ipsum dolor sit amet consectetur adipisicing el",
-    },
+export default function Home({ products }) {
+  // const dummyProducts = [
+  //   {
+  //     img: "/assets/pr4.png",
+  //     type: "original",
+  //     name: "DAIFUKU CORNETTO",
+  //     desc: " Lorem ipsum dolor sit amet consectetur at consectetur  t consectetur  t consectetur dipisicing el  Lorem ipsum dolor sit amet consectetur adipisicing el",
+  //   },
 
-    {
-      img: "/assets/pr6.png",
-      type: "nature",
-      name: "GO GREEN (TEA)",
-      desc: " Lorem ipsum dolor s ipsum dolor sit amet consectetur adipisicing el",
-    },
-    {
-      img: "/assets/pr2.png",
-      type: "coffee",
-      name: "GOOD DAY ABANGAN",
-      desc: " Lorem ipsumsectetur adipisicing el",
-    },
-  ];
+  //   {
+  //     img: "/assets/pr6.png",
+  //     type: "nature",
+  //     name: "GO GREEN (TEA)",
+  //     desc: " Lorem ipsum dolor s ipsum dolor sit amet consectetur adipisicing el",
+  //   },
+  //   {
+  //     img: "/assets/pr2.png",
+  //     type: "coffee",
+  //     name: "GOOD DAY ABANGAN",
+  //     desc: " Lorem ipsumsectetur adipisicing el",
+  //   },
+  // ];
 
   return (
     <>
@@ -43,20 +43,20 @@ export default function Home() {
           <h2>Products</h2>
         </div>
         <div className="container home__container">
-          {dummyProducts.map((product) => (
-            <div className={` home__product--${product.type}`}>
+          {products.map((product) => (
+            <div className={` home__product--${product.class}`}>
               <div className="home__product-image">
                 <Image
                   src={product.img}
                   width={200}
                   height={280}
-                  alt={product.name}
+                  alt={product.title}
                 />
               </div>
-              <h3>{product.name}</h3>
+              <h3>{product.title}</h3>
               <span>⭒ ⭒ ⭒</span>
               <p>{product.desc}</p>
-              <Link href="/product/1" passHref>
+              <Link href={`/product/${product._id}`} passHref>
                 <a className="btn btn--primary">See Details</a>
               </Link>
             </div>
@@ -66,3 +66,14 @@ export default function Home() {
     </>
   );
 }
+
+export const getStaticProps = async (ctx) => {
+  const res = await fetch("http://localhost:3000/api/products");
+  const data = await res.json();
+
+  return {
+    props: {
+      products: data,
+    },
+  };
+};
