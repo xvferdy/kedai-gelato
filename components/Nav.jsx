@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 // material
 import Badge from "@mui/material/Badge";
@@ -8,7 +9,17 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 // react-icons
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
+// redux
+import { useSelector, useDispatch } from "react-redux";
+
 function Nav() {
+  const [clientQty, setClientQty] = useState(0);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  useEffect(() => {
+    console.log(totalQuantity);
+    setClientQty(totalQuantity);
+  }, [totalQuantity]);
+
   return (
     <nav className="nav">
       <div className="container nav__container">
@@ -42,7 +53,7 @@ function Nav() {
         <Link href="/cart" passHref>
           <div className="nav__cart">
             <Badge
-              badgeContent={4}
+              badgeContent={clientQty}
               max={10}
               sx={{
                 ".MuiBadge-badge": {

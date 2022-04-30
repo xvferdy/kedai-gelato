@@ -7,22 +7,32 @@ import { MdOutlineIcecream } from "react-icons/md";
 // mui
 import Badge from "@mui/material/Badge";
 
+// redux
+import { addProduct, reset } from "../../redux/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
+
 function Product({ product }) {
   const [prizeSize, setPrizeSize] = useState(product.prices[0].price);
   const [prizeTopping, setPrizeTopping] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
   const [priceTotal, setPriceTotal] = useState(product.prices[0].price);
-  const [priceNonQty, setPriceNonQty] = useState(product.prices[0].price);
-  const [toppings, setToppings] = useState([]);
+  const [priceTotalNonQty, setPriceTotalNonQty] = useState(
+    product.prices[0].price
+  );
+  const [extras, setExtras] = useState([]);
 
   useEffect(() => {
     setPriceTotal((prizeSize + prizeTopping) * quantity);
   }, [prizeSize, prizeTopping, quantity]);
 
   useEffect(() => {
-    setPriceNonQty(prizeSize + prizeTopping);
+    setPriceTotalNonQty(prizeSize + prizeTopping);
   }, [prizeSize, prizeTopping]);
+
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+  console.log(cart);
 
   return (
     <section className="product">
@@ -40,10 +50,8 @@ function Product({ product }) {
           <p className="product__details-description">❝{product.desc}❞</p>
           <h2 className="product__details-name">{product.title}</h2>
 
+          {/* SIZE */}
           <div className="product__details-size">
-            <h2>size: {prizeSize}</h2>
-            <h2>topping: {prizeTopping}</h2>
-            <h2>qty: {quantity}</h2>
             <p>Choose the size</p>
             <div className="size-list">
               {product.prices.map((size) => (
@@ -72,6 +80,7 @@ function Product({ product }) {
             </div>
           </div>
 
+          {/* TOPPINGS */}
           <div className="product__details-toppings">
             <p>Additional topping</p>
             <form autoComplete="off">
@@ -83,8 +92,14 @@ function Product({ product }) {
                     name={topping.text}
                     onChange={(e) => {
                       e.target.checked
-                        ? setPrizeTopping(prizeTopping + topping.price)
-                        : setPrizeTopping(prizeTopping - topping.price);
+                        ? (setPrizeTopping(prizeTopping + topping.price),
+                          setExtras((prev) => [...prev, topping]))
+                        : (setPrizeTopping(prizeTopping - topping.price),
+                          setExtras(
+                            extras.filter(
+                              (product) => product._id !== topping._id
+                            )
+                          ));
                     }}
                   />
                   <label htmlFor={topping.text}>{topping.text}</label>
@@ -93,6 +108,7 @@ function Product({ product }) {
             </form>
           </div>
 
+          {/* QUANTITY */}
           <div className="product__details-quantity">
             <p>Quantity</p>
             <form autoComplete="off" style={{ display: "inline" }}>
@@ -112,6 +128,15 @@ function Product({ product }) {
             onClick={() => {
               if (quantity <= 0) {
                 return alert("error");
+              } else {
+                dispatch(
+                  addProduct({
+                    ...product,
+                    priceTotalNonQty,
+                    quantity,
+                    extras,
+                  })
+                );
               }
             }}
           >
