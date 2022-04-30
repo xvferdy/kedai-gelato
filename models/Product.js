@@ -30,7 +30,7 @@ const ProductSchema = new mongoose.Schema(
       ],
       required: true,
     },
-    extraTopping: {
+    extraToppings: {
       type: [
         {
           text: { type: String, required: true },
