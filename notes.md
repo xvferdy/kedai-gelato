@@ -11,6 +11,7 @@
 - typography group style
 - size icon change
 - remove item cart dispatch
+- uninstall material icon
 
 **Hard**
 - failed contrass

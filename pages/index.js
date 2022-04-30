@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Home() {
   const dummyProducts = [
     {
-      img: "/assets/pr1.png",
+      img: "/assets/pr4.png",
       type: "original",
       name: "DAIFUKU CORNETTO",
       desc: " Lorem ipsum dolor sit amet consectetur at consectetur  t consectetur  t consectetur dipisicing el  Lorem ipsum dolor sit amet consectetur adipisicing el",

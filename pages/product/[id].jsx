@@ -19,7 +19,7 @@ function Product() {
       </div>
       <div className="container product__container">
         <div className="product__showcase">
-          <Image src="/assets/pr6.png" width={500} height={500} alt="name" />
+          <Image src="/assets/pr2.png" width={500} height={700} alt="name" />
         </div>
         <div className="product__details">
           <h2 className="product__details-price">$ 123</h2>

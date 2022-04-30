@@ -30,63 +30,63 @@ function cart() {
           <div className="cart__details-item">
             <div className="item-image">
               <Image
-                src="/assets/pr2.png"
-                width={100}
-                height={100}
-                alt="name"
-              />
-            </div>
-            <span className="item-name">Oereuo Tou Luv</span>
-            <div className="item-topping">
-              <span>Strawberry Ice, Neon flavour</span>
-            </div>
-            <span className="item-price">$12.345</span>
-            <span className="item-quantity">200</span>
-            <span className="item-total">$3.450.000</span>
-            <Tooltip
-              title={<small style={{ color: "#fff" }}>Remove</small>}
-              placement="top"
-              disableRipple
-              className="delete"
-            >
-              <IconButton>
-                <BsTrash />
-              </IconButton>
-            </Tooltip>
-          </div>
-          <div className="cart__details-item">
-            <div className="item-image">
-              <Image
-                src="/assets/pr2.png"
-                width={100}
-                height={100}
-                alt="name"
-              />
-            </div>
-            <span className="item-name">Oereuo Tou Luv</span>
-            <div className="item-topping">
-              <span>Strawberry Ice, Neon flavour</span>
-            </div>
-            <span className="item-price">$12.345</span>
-            <span className="item-quantity">200</span>
-            <span className="item-total">$3.450.000</span>
-            <Tooltip
-              title={<small style={{ color: "#fff" }}>Remove</small>}
-              placement="top"
-              disableRipple
-              className="delete"
-            >
-              <IconButton>
-                <BsTrash />
-              </IconButton>
-            </Tooltip>
-          </div>
-          <div className="cart__details-item">
-            <div className="item-image">
-              <Image
                 src="/assets/pr6.png"
                 width={100}
-                height={100}
+                height={140}
+                alt="name"
+              />
+            </div>
+            <span className="item-name">Oereuo Tou Luv</span>
+            <div className="item-topping">
+              <span>Strawberry Ice, Neon flavour</span>
+            </div>
+            <span className="item-price">$12.345</span>
+            <span className="item-quantity">200</span>
+            <span className="item-total">$3.450.000</span>
+            <Tooltip
+              title={<small style={{ color: "#fff" }}>Remove</small>}
+              placement="top"
+              disableRipple
+              className="delete"
+            >
+              <IconButton>
+                <BsTrash />
+              </IconButton>
+            </Tooltip>
+          </div>
+          <div className="cart__details-item">
+            <div className="item-image">
+              <Image
+                src="/assets/pr2.png"
+                width={100}
+                height={140}
+                alt="name"
+              />
+            </div>
+            <span className="item-name">Oereuo Tou Luv</span>
+            <div className="item-topping">
+              <span>Strawberry Ice, Neon flavour</span>
+            </div>
+            <span className="item-price">$12.345</span>
+            <span className="item-quantity">200</span>
+            <span className="item-total">$3.450.000</span>
+            <Tooltip
+              title={<small style={{ color: "#fff" }}>Remove</small>}
+              placement="top"
+              disableRipple
+              className="delete"
+            >
+              <IconButton>
+                <BsTrash />
+              </IconButton>
+            </Tooltip>
+          </div>
+          <div className="cart__details-item">
+            <div className="item-image">
+              <Image
+                src="/assets/pr4.png"
+                width={100}
+                height={140}
                 alt="name"
               />
             </div>
