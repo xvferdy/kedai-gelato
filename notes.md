@@ -14,6 +14,9 @@
 - uninstall material icon
 - ganti assets semua product gelato
 - title product touppercase
+- line height p product details/ semua
+- kopi ganti
+- 100 vh di phone bagian gambar
 
 **Hard**
 - failed contrass
@@ -43,6 +46,7 @@
   - 
 
 ## Bug
+- hydration server !== client (redux persist)
 
 ## Learned
 

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // products: [
-//   { ...product, extras: [], priceTotalNonQty: 0, quantity: 0 },
+//   { ...product, extras: [], priceTotalNonQty: 0, quantity: 0, reduxId: 0},
 // ];
 
 export const cartSlice = createSlice({
@@ -14,6 +14,13 @@ export const cartSlice = createSlice({
         action.payload.priceTotalNonQty * action.payload.quantity;
       state.totalQuantity += 1;
     },
+    removeProduct: (state, action) => {
+      state.products = state.products.filter(
+        (product) => product.reduxId !== action.payload.id
+      );
+      state.totalPrice -= action.payload.price;
+      state.totalQuantity -= 1;
+    },
     reset: (state, action) => {
       state.products = [];
       state.totalQuantity = 0;
@@ -22,5 +29,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addProduct, reset } = cartSlice.actions;
+export const { addProduct, reset, removeProduct } = cartSlice.actions;
 export default cartSlice.reducer;

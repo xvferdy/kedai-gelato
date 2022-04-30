@@ -96,9 +96,7 @@ function Product({ product }) {
                           setExtras((prev) => [...prev, topping]))
                         : (setPrizeTopping(prizeTopping - topping.price),
                           setExtras(
-                            extras.filter(
-                              (product) => product._id !== topping._id
-                            )
+                            extras.filter((extra) => extra._id !== topping._id)
                           ));
                     }}
                   />
@@ -111,7 +109,11 @@ function Product({ product }) {
           {/* QUANTITY */}
           <div className="product__details-quantity">
             <p>Quantity</p>
-            <form autoComplete="off" style={{ display: "inline" }}>
+            <form
+              autoComplete="off"
+              style={{ display: "inline" }}
+              onSubmit={(e) => e.preventDefault()}
+            >
               <input
                 type="number"
                 value={quantity.toString()}
@@ -135,6 +137,10 @@ function Product({ product }) {
                     priceTotalNonQty,
                     quantity,
                     extras,
+                    reduxId:
+                      cart.products.length !== 0
+                        ? cart.products[cart.products.length - 1].reduxId + 1
+                        : 1,
                   })
                 );
               }

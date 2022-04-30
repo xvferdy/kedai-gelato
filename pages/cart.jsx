@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
+// icon
 import { MdOutlineShoppingBasket } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
 import { FiTruck } from "react-icons/fi";
@@ -8,7 +10,21 @@ import { FiTruck } from "react-icons/fi";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { addProduct, reset, removeProduct } from "../redux/cartSlice";
+
 function cart() {
+  const [cart, setCart] = useState([]);
+
+  // redux
+  const dispatch = useDispatch();
+  const cartRedux = useSelector((state) => state.cart);
+  console.log(cart);
+  useEffect(() => {
+    setCart(cartRedux);
+  }, [cartRedux]);
+
   return (
     <section className="cart">
       <div className="title">
@@ -27,91 +43,55 @@ function cart() {
             <small>Remove</small>
           </div>
 
-          <div className="cart__details-item">
-            <div className="item-image">
-              <Image
-                src="/assets/pr6.png"
-                width={100}
-                height={140}
-                alt="name"
-              />
+          {cart.products?.map((product, idx) => (
+            <div key={idx} className="cart__details-item">
+              <div className="item-image">
+                <Image src={product.img} width={100} height={140} alt="name" />
+              </div>
+              <span className="item-name">{product.title}</span>
+              <div className="item-topping">
+                {product.extras.length <= 0 ? (
+                  <small>no toppings</small>
+                ) : (
+                  product.extras.map((extra, idx) => (
+                    <span key={extra._id}>
+                      {extra.text}
+                      {idx < product.extras.length - 1 && ","}
+                      &nbsp;
+                    </span>
+                  ))
+                )}
+              </div>
+              <span className="item-price">${product.priceTotalNonQty}</span>
+              <span className="item-quantity">{product.quantity}</span>
+              <span className="item-total">
+                ${product.priceTotalNonQty * product.quantity}
+              </span>
+              <Tooltip
+                title={<small style={{ color: "#fff" }}>Remove</small>}
+                placement="top"
+                disableRipple
+                className="delete"
+                onClick={() =>
+                  confirm("Remove from cart?") &&
+                  dispatch(
+                    removeProduct({
+                      id: product.reduxId,
+                      price: product.priceTotalNonQty * product.quantity,
+                    })
+                  )
+                }
+              >
+                <IconButton>
+                  <BsTrash />
+                </IconButton>
+              </Tooltip>
             </div>
-            <span className="item-name">Oereuo Tou Luv</span>
-            <div className="item-topping">
-              <span>Strawberry Ice, Neon flavour</span>
-            </div>
-            <span className="item-price">$12.345</span>
-            <span className="item-quantity">200</span>
-            <span className="item-total">$3.450.000</span>
-            <Tooltip
-              title={<small style={{ color: "#fff" }}>Remove</small>}
-              placement="top"
-              disableRipple
-              className="delete"
-            >
-              <IconButton>
-                <BsTrash />
-              </IconButton>
-            </Tooltip>
-          </div>
-          <div className="cart__details-item">
-            <div className="item-image">
-              <Image
-                src="/assets/pr2.png"
-                width={100}
-                height={140}
-                alt="name"
-              />
-            </div>
-            <span className="item-name">Oereuo Tou Luv</span>
-            <div className="item-topping">
-              <span>Strawberry Ice, Neon flavour</span>
-            </div>
-            <span className="item-price">$12.345</span>
-            <span className="item-quantity">200</span>
-            <span className="item-total">$3.450.000</span>
-            <Tooltip
-              title={<small style={{ color: "#fff" }}>Remove</small>}
-              placement="top"
-              disableRipple
-              className="delete"
-            >
-              <IconButton>
-                <BsTrash />
-              </IconButton>
-            </Tooltip>
-          </div>
-          <div className="cart__details-item">
-            <div className="item-image">
-              <Image
-                src="/assets/pr4.png"
-                width={100}
-                height={140}
-                alt="name"
-              />
-            </div>
-            <span className="item-name">Oereuo Tou Luv</span>
-            <div className="item-topping">
-              <span>Strawberry Ice, Neon flavour</span>
-            </div>
-            <span className="item-price">$12.345</span>
-            <span className="item-quantity">200</span>
-            <span className="item-total">$3.450.000</span>
-            <Tooltip
-              title={<small style={{ color: "#fff" }}>Remove</small>}
-              placement="top"
-              disableRipple
-              className="delete"
-            >
-              <IconButton>
-                <BsTrash />
-              </IconButton>
-            </Tooltip>
-          </div>
+          ))}
         </div>
         <div className="cart__payments">
           <div>
-            <h2>Cart Total: $900</h2>
+            <h2>Cart Total: ${cart.totalPrice}</h2>
             <span>Shipping & taxes calculated at checkout</span>
           </div>
           <button className="btn btn--primary">

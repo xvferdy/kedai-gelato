@@ -16,7 +16,6 @@ function Nav() {
   const [clientQty, setClientQty] = useState(0);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   useEffect(() => {
-    console.log(totalQuantity);
     setClientQty(totalQuantity);
   }, [totalQuantity]);
 
