@@ -10,6 +10,7 @@
   &__container {
     display: grid;
     grid-template-columns: 68% 28%;
+    // align-items: start;
     gap: 4%;
   }
   &__details {
@@ -24,7 +25,6 @@
       gap: 1.2rem;
       color: $color-grey;
       justify-items: center;
-
       span {
         display: block;
       }

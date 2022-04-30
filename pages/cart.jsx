@@ -16,6 +16,7 @@ import { addProduct, reset, removeProduct } from "../redux/cartSlice";
 
 function cart() {
   const [cart, setCart] = useState([]);
+  const [cod, setCod] = useState(false);
 
   // redux
   const dispatch = useDispatch();
@@ -46,7 +47,12 @@ function cart() {
           {cart.products?.map((product, idx) => (
             <div key={idx} className="cart__details-item">
               <div className="item-image">
-                <Image src={product.img} width={100} height={140} alt="name" />
+                <Image
+                  src={product.img}
+                  width={100}
+                  height={140}
+                  alt={product.title}
+                />
               </div>
               <span className="item-name">{product.title}</span>
               <div className="item-topping">
@@ -68,7 +74,11 @@ function cart() {
                 ${product.priceTotalNonQty * product.quantity}
               </span>
               <Tooltip
-                title={<small style={{ color: "#fff" }}>Remove</small>}
+                title={
+                  <p style={{ color: "#fff", padding: "0.5rem", fontSize: 14 }}>
+                    Remove
+                  </p>
+                }
                 placement="top"
                 disableRipple
                 className="delete"
@@ -94,12 +104,14 @@ function cart() {
             <h2>Cart Total: ${cart.totalPrice}</h2>
             <span>Shipping & taxes calculated at checkout</span>
           </div>
-          <button className="btn btn--primary">
+          <button className="btn btn--primary" onClick={() => setCod(!cod)}>
             <MdOutlineShoppingBasket className="icon" /> Checkout
           </button>
-          <button className="btn btn--primary">
-            Cash On Delivery <FiTruck className="icon" />
-          </button>
+          {cod && (
+            <button className="btn btn--primary">
+              Cash On Delivery <FiTruck className="icon" />
+            </button>
+          )}
         </div>
       </div>
     </section>

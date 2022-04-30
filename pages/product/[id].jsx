@@ -15,17 +15,15 @@ function Product({ product }) {
   const [prizeSize, setPrizeSize] = useState(product.prices[0].price);
   const [prizeTopping, setPrizeTopping] = useState(0);
   const [quantity, setQuantity] = useState(1);
-
+  const [extras, setExtras] = useState([]);
   const [priceTotal, setPriceTotal] = useState(product.prices[0].price);
   const [priceTotalNonQty, setPriceTotalNonQty] = useState(
     product.prices[0].price
   );
-  const [extras, setExtras] = useState([]);
 
   useEffect(() => {
     setPriceTotal((prizeSize + prizeTopping) * quantity);
   }, [prizeSize, prizeTopping, quantity]);
-
   useEffect(() => {
     setPriceTotalNonQty(prizeSize + prizeTopping);
   }, [prizeSize, prizeTopping]);
@@ -34,11 +32,29 @@ function Product({ product }) {
   const cart = useSelector((state) => state.cart);
   console.log(cart);
 
+  const handleAddProduct = () => {
+    if (quantity <= 0) {
+      return alert("Error!");
+    }
+    dispatch(
+      addProduct({
+        ...product,
+        priceTotalNonQty,
+        quantity,
+        extras,
+        reduxId:
+          cart.products.length !== 0
+            ? cart.products[cart.products.length - 1].reduxId + 1
+            : 1,
+      })
+    );
+  };
+
   return (
     <section className="product">
       <div className="title">
-        {/* <h2>details</h2> */}
-        {/* <h2>OREO TOMATO</h2> */}
+        {/* <h2>Details</h2> */}
+        {/* <h2>Product Details</h2> */}
       </div>
       <div className="container product__container">
         <div className="product__showcase">
@@ -112,7 +128,10 @@ function Product({ product }) {
             <form
               autoComplete="off"
               style={{ display: "inline" }}
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleAddProduct();
+              }}
             >
               <input
                 type="number"
@@ -125,27 +144,7 @@ function Product({ product }) {
             </form>
           </div>
 
-          <button
-            className="btn btn--primary"
-            onClick={() => {
-              if (quantity <= 0) {
-                return alert("error");
-              } else {
-                dispatch(
-                  addProduct({
-                    ...product,
-                    priceTotalNonQty,
-                    quantity,
-                    extras,
-                    reduxId:
-                      cart.products.length !== 0
-                        ? cart.products[cart.products.length - 1].reduxId + 1
-                        : 1,
-                  })
-                );
-              }
-            }}
-          >
+          <button className="btn btn--primary" onClick={handleAddProduct}>
             Add to Cart
           </button>
         </div>

@@ -10,6 +10,7 @@
   &__container {
     display: grid;
     grid-template-columns: 68% 28%;
+    align-items: start;
     gap: 4%;
   }
   &__details {
@@ -28,16 +29,23 @@
       // border: 1px solid #000;
       display: grid;
       grid-template-columns: 14% 18% 32% 10% 6% 15% 5%;
+      position: relative;
+
       // gap: 1%;
       & > * {
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
+        // border: 1px solid #000;
       }
       .delete {
         font-size: 2.4rem;
         color: $color-black;
         cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: calc(50% - 2.4rem / 2 - 0.7rem);
       }
     }
   }
