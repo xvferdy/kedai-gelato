@@ -17,6 +17,7 @@
 - line height p product details/ semua
 - kopi ganti
 - 100 vh di phone bagian gambar
+- buat baru modal cod cash
 
 **Hard**
 - failed contrass
@@ -27,6 +28,7 @@
 - ganti pr1 krn size tidak sesuai
 - no cart list ui
 - no order ui
+- alert and confirm modal change
 
 ## Timeline
 - main 28 apr
@@ -43,7 +45,10 @@
   - Order page 1.37am - 2.52am
 - dev 30 apr
   - simple rest setup 6.11pm - 8.01pm
-  - 
+  - redux pt1. 8 - 10
+  - redux pt2. 1 - 3
+- dev 1 may
+  - Order page status
 
 ## Bug
 - hydration server !== client (redux persist)
@@ -52,3 +57,7 @@
 
 ## Others
 - credit freepik,Pixel perfect
+
+## :\(
+- MUI style kinda mixin out with sass
+- mui diffrent font family from app

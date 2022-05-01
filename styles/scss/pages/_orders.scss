@@ -41,6 +41,30 @@
         gap: 0.8rem;
         // border: 1px solid #000;
       }
+      .done {
+        // border: 1px solid #000;
+      }
+      .inProgress {
+        animation: inProgress 1s ease infinite alternate;
+        .checkedIcon {
+          opacity: 0;
+        }
+      }
+      .undone {
+        opacity: 0.3;
+        .checkedIcon {
+          opacity: 0;
+        }
+      }
+
+      @keyframes inProgress {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
     }
   }
   &__payments {

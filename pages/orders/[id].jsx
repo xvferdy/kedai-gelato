@@ -2,7 +2,21 @@ import Image from "next/image";
 
 import { BsBagCheck } from "react-icons/bs";
 
-function Order() {
+function Order({ order }) {
+  const progressInfo = [
+    "cash-payment",
+    "salad",
+    "delivery-courier",
+    "delivered",
+  ];
+  let status = order.status; // taro di luar? (0 - 3)
+  console.log(order);
+  const orderProgression = (progress) => {
+    if (progress - status < 1) return "done";
+    if (progress - status === 1) return "inProgress";
+    if (progress - status > 1) return "undone";
+  };
+
   return (
     <section className="order">
       <div className="title">
@@ -18,7 +32,7 @@ function Order() {
             </div>
             <div>
               <small>Customer</small>
-              <span>fery nuegero</span>
+              <span>{order.customer}</span>
             </div>
             <div>
               <small>Address</small>
@@ -26,74 +40,32 @@ function Order() {
             </div>
             <div>
               <small>Total</small>
-              <span>$123</span>
+              <span>${order.total}</span>
             </div>
           </div>
 
+          {/* ORDER PROCESS */}
           <div className="order__details-process">
-            <div className="order-status-1">
-              <Image
-                src="/assets/cash-payment.png"
-                width={30}
-                height={30}
-                alt=""
-              />
-              <span>Payment</span>
-              <div>
+            {progressInfo.map((text, idx) => (
+              <div key={idx} className={orderProgression(idx)}>
                 <Image
-                  src="/assets/checked.png"
-                  width={20}
-                  height={20}
-                  alt=""
+                  src={`/assets/${text}.png`}
+                  width={30}
+                  height={30}
+                  alt={text}
                 />
+                <span>{text.toUpperCase()}</span>
+                <div>
+                  <img
+                    className="checkedIcon"
+                    src="/assets/checked.png"
+                    width={20}
+                    height={20}
+                    alt="checkedIcon"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="order-status-1">
-              <Image src="/assets/salad.png" width={30} height={30} alt="" />
-              <span>Preparing</span>
-              <div>
-                <Image
-                  src="/assets/checked.png"
-                  width={20}
-                  height={20}
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className="order-status-1">
-              <Image
-                src="/assets/delivery-courier.png"
-                width={30}
-                height={30}
-                alt=""
-              />
-              <span>On The Way</span>
-              <div>
-                <Image
-                  src="/assets/checked.png"
-                  width={20}
-                  height={20}
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className="order-status-1">
-              <Image
-                src="/assets/delivered.png"
-                width={30}
-                height={30}
-                alt=""
-              />
-              <span>Delivered</span>
-              <div>
-                <Image
-                  src="/assets/checked.png"
-                  width={20}
-                  height={20}
-                  alt=""
-                />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className="order__payments">
@@ -114,3 +86,16 @@ function Order() {
 }
 
 export default Order;
+
+export const getServerSideProps = async (ctx) => {
+  const { id } = ctx.params;
+
+  const res = await fetch(`http://localhost:3000/api/orders/${id}`);
+  const data = await res.json();
+  console.log(data);
+  return {
+    props: {
+      order: data,
+    },
+  };
+};

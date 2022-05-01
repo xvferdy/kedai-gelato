@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 // icon
 import { MdOutlineShoppingBasket } from "react-icons/md";
@@ -10,6 +11,14 @@ import { FiTruck } from "react-icons/fi";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { addProduct, reset, removeProduct } from "../redux/cartSlice";
@@ -17,14 +26,61 @@ import { addProduct, reset, removeProduct } from "../redux/cartSlice";
 function cart() {
   const [cart, setCart] = useState([]);
   const [cod, setCod] = useState(false);
-
-  // redux
+  const [open, setOpen] = useState(false);
+  const [orderData, setOrderData] = useState({
+    customer: "",
+    address: "",
+    phone: "",
+  });
   const dispatch = useDispatch();
   const cartRedux = useSelector((state) => state.cart);
+  const router = useRouter();
+
   console.log(cart);
   useEffect(() => {
     setCart(cartRedux);
   }, [cartRedux]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setOrderData({ ...orderData, [name]: value });
+  };
+  console.log(orderData);
+
+  const handleCreateOrder = async (orderData) => {
+    console.log(orderData);
+    try {
+      // const res = await fetch("http://localhost:3000/api/orders", {
+      //   method: "POST",
+      //   body: JSON.stringify(data),
+      // });
+      // return res.json();
+
+      const res = await fetch("http://localhost:3000/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+      const data = await res.json();
+
+      if (res.status === 201) {
+        console.log(data);
+        dispatch(reset());
+        router.push(`/orders/${data._id}`);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <section className="cart">
@@ -108,11 +164,72 @@ function cart() {
             <MdOutlineShoppingBasket className="icon" /> Checkout
           </button>
           {cod && (
-            <button className="btn btn--primary">
+            <button className="btn btn--primary" onClick={handleClickOpen}>
               Cash On Delivery <FiTruck className="icon" />
             </button>
           )}
         </div>
+
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle sx={{ fontSize: "182.5%", color: "#1976D2" }}>
+            You will pay $999 after delivery
+          </DialogTitle>
+          <DialogContent>
+            <TextField
+              sx={{ marginBottom: 3 }}
+              inputProps={{ style: { fontSize: "162.5%" } }} // font size of input text
+              InputLabelProps={{ style: { fontSize: "162.5%" } }} // font size of input label
+              autoFocus
+              label="Name"
+              fullWidth
+              variant="standard"
+              name="customer"
+              onChange={handleChange}
+            />
+            <TextField
+              sx={{ marginBottom: 3 }}
+              inputProps={{ style: { fontSize: "162.5%" } }} // font size of input text
+              InputLabelProps={{ style: { fontSize: "162.5%" } }} // font size of input label
+              autoFocus
+              label="Phone Number"
+              fullWidth
+              variant="standard"
+              name="phone"
+              onChange={handleChange}
+            />
+            <TextField
+              sx={{ marginBottom: 3 }}
+              inputProps={{ style: { fontSize: "162.5%" } }} // font size of input text
+              InputLabelProps={{ style: { fontSize: "162.5%" } }} // font size of input label
+              autoFocus
+              label="Address"
+              fullWidth
+              variant="standard"
+              name="address"
+              onChange={handleChange}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={handleClose}
+              sx={{ fontSize: "142.5%", fontWeight: "bold" }}
+            >
+              Cancel
+            </Button>
+            <Button
+              sx={{ fontSize: "142.5%", fontWeight: "bold" }}
+              onClick={() =>
+                handleCreateOrder({
+                  ...orderData,
+                  total: cart.totalPrice,
+                  method: 0,
+                })
+              }
+            >
+              Order Now
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     </section>
   );
