@@ -4,6 +4,7 @@ import { BsBagCheck } from "react-icons/bs";
 
 function Order({ order }) {
   const progressInfo = ["payment", "preparing", "on the way", "delivered"];
+  let dollarUSLocale = Intl.NumberFormat("en-US");
   let status = order.status; // (0 - 3)
   console.log(order);
   const orderProgression = (progress) => {
@@ -65,7 +66,7 @@ function Order({ order }) {
         </div>
         <div className="order__payments">
           <div>
-            <h2>Total Paid: ${order.total}</h2>
+            <h2>Total Paid: ${dollarUSLocale.format(order.total)}</h2>
             <p>
               Thank you for ordering our product, we'll be there in the blink of
               the eye!

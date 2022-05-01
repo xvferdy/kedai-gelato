@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 function OrderList({ orders }) {
+  let dollarUSLocale = Intl.NumberFormat("en-US");
   return (
     <section className="order-list">
       <div className="title">
@@ -27,7 +28,7 @@ function OrderList({ orders }) {
                     </div>
                     <div>
                       <small>Total</small>
-                      <span>${order.total}</span>
+                      <span>${dollarUSLocale.format(order.total)}</span>
                     </div>
                   </a>
                 </Link>

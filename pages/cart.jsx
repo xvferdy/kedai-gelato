@@ -35,6 +35,7 @@ function cart() {
   const dispatch = useDispatch();
   const cartRedux = useSelector((state) => state.cart);
   const router = useRouter();
+  let dollarUSLocale = Intl.NumberFormat("en-US");
 
   console.log(cart);
   useEffect(() => {
@@ -128,11 +129,14 @@ function cart() {
                     )}
                   </div>
                   <span className="item-price">
-                    ${product.priceTotalNonQty}
+                    ${dollarUSLocale.format(product.priceTotalNonQty)}
                   </span>
                   <span className="item-quantity">{product.quantity}</span>
                   <span className="item-total">
-                    ${product.priceTotalNonQty * product.quantity}
+                    $
+                    {dollarUSLocale.format(
+                      product.priceTotalNonQty * product.quantity
+                    )}
                   </span>
                   <Tooltip
                     title={
@@ -168,24 +172,29 @@ function cart() {
             </>
           )}
         </div>
-        <div className="cart__payments">
-          <div>
-            <h2>Cart Total: ${cart.totalPrice}</h2>
-            <p>Shipping & taxes calculated at checkout</p>
-          </div>
-          <button className="btn btn--primary" onClick={() => setCod(!cod)}>
-            <MdOutlineShoppingBasket className="icon" /> Checkout
-          </button>
-          {cod && (
-            <button className="btn btn--primary" onClick={handleClickOpen}>
-              Cash On Delivery <FiTruck className="icon" />
-            </button>
-          )}
-        </div>
 
+        {cart.products?.length >= 1 && (
+          <div className="cart__payments">
+            <div>
+              <h2>Cart Total: ${dollarUSLocale.format(cart.totalPrice)}</h2>
+              <p>Shipping & taxes calculated at checkout</p>
+            </div>
+            <button className="btn btn--primary" onClick={() => setCod(!cod)}>
+              <MdOutlineShoppingBasket className="icon" /> Checkout
+            </button>
+            {cod && (
+              <button className="btn btn--primary" onClick={handleClickOpen}>
+                Cash On Delivery <FiTruck className="icon" />
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* MODAL */}
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle sx={{ fontSize: "182.5%", color: "#1976D2" }}>
-            You will pay $999 after delivery
+            You will pay ${dollarUSLocale.format(cart.totalPrice)} after
+            delivery
           </DialogTitle>
           <DialogContent>
             <TextField

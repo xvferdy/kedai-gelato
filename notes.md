@@ -25,7 +25,7 @@
 - [ ] failed contrass
 - [ ] firefox scroll restore bug (firefox)
 - [ ] ngload
-- [ ] input radion on size
+- [ ] input radion on size. pakai efek on tap saja animation
 - [ ] drop shadow product, cart, product, ect
 - [ ] ganti pr1 krn size tidak sesuai
 - [ ] no cart list ui

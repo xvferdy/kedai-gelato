@@ -20,6 +20,7 @@ function Product({ product }) {
   const [priceTotalNonQty, setPriceTotalNonQty] = useState(
     product.prices[0].price
   );
+  let dollarUSLocale = Intl.NumberFormat("en-US");
 
   useEffect(() => {
     setPriceTotal((prizeSize + prizeTopping) * quantity);
@@ -33,7 +34,7 @@ function Product({ product }) {
   console.log(cart);
 
   const handleAddProduct = () => {
-    if (quantity <= 0) {
+    if (quantity <= 0 || quantity.toString().includes(".")) {
       return alert("Error!");
     }
     dispatch(
@@ -61,7 +62,9 @@ function Product({ product }) {
           <Image src={product.img} width={500} height={700} alt="name" />
         </div>
         <div className="product__details">
-          <h2 className="product__details-price">$ {priceTotal}</h2>
+          <h2 className="product__details-price">
+            $ {dollarUSLocale.format(priceTotal)}
+          </h2>
 
           <p className="product__details-description">❝{product.desc}❞</p>
           <h2 className="product__details-name">{product.title}</h2>
@@ -138,6 +141,8 @@ function Product({ product }) {
                 type="number"
                 value={quantity.toString()}
                 placeholder="Ex: 2"
+                min="1"
+                step="1"
                 onChange={(e) => {
                   setQuantity(Number(e.target.value));
                 }}
