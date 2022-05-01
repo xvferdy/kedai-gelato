@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 // material
 import Badge from "@mui/material/Badge";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 // react-icons
 import { AiOutlineShoppingCart } from "react-icons/ai";
