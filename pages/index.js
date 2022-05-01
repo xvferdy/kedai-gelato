@@ -36,7 +36,11 @@ export default function Home({ products }) {
               </div>
               <h3>{product.title}</h3>
               <span>⭒ ⭒ ⭒</span>
-              <p>{product.desc}</p>
+              <p>
+                {product.desc.length > 135
+                  ? product.desc.slice(0, 135) + "..."
+                  : product.desc}
+              </p>
               <Link href={`/product/${product._id}`} passHref>
                 <a className="btn btn--primary">See Details</a>
               </Link>

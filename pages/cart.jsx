@@ -158,7 +158,7 @@ function cart() {
         <div className="cart__payments">
           <div>
             <h2>Cart Total: ${cart.totalPrice}</h2>
-            <span>Shipping & taxes calculated at checkout</span>
+            <p>Shipping & taxes calculated at checkout</p>
           </div>
           <button className="btn btn--primary" onClick={() => setCod(!cod)}>
             <MdOutlineShoppingBasket className="icon" /> Checkout

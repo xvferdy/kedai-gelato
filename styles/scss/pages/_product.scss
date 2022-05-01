@@ -24,7 +24,8 @@
   &__details {
     // border: 1px solid rgb(122, 4, 4);
     padding: 0 8.4rem;
-    color: $color-grey;
+
+    color: $color-black;
     // background-color: rgb(146, 58, 58);
     display: flex;
     flex-direction: column;
@@ -34,6 +35,7 @@
     }
     &-description {
       font-style: italic;
+      color: $color-grey;
     }
     &-name {
       color: $color-primary;
@@ -81,10 +83,11 @@
       display: grid;
       gap: 0.7rem;
       form {
-        input {
+        input.qty {
           padding: 1.5rem;
           max-width: 20rem;
           background-color: darken($color-light, 3%);
+
           &::placeholder {
             color: lightgray;
           }

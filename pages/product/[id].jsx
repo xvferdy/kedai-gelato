@@ -134,6 +134,7 @@ function Product({ product }) {
               }}
             >
               <input
+                className="qty"
                 type="number"
                 value={quantity.toString()}
                 placeholder="Ex: 2"

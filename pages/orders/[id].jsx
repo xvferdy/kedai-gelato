@@ -3,13 +3,8 @@ import Image from "next/image";
 import { BsBagCheck } from "react-icons/bs";
 
 function Order({ order }) {
-  const progressInfo = [
-    "cash-payment",
-    "salad",
-    "delivery-courier",
-    "delivered",
-  ];
-  let status = order.status; // taro di luar? (0 - 3)
+  const progressInfo = ["payment", "preparing", "on the way", "delivered"];
+  let status = order.status; // (0 - 3)
   console.log(order);
   const orderProgression = (progress) => {
     if (progress - status < 1) return "done";
@@ -28,7 +23,7 @@ function Order({ order }) {
           <div className="order__details-header">
             <div>
               <small>Order ID</small>
-              <span>123456789</span>
+              <span>{order._id}</span>
             </div>
             <div>
               <small>Customer</small>
@@ -36,7 +31,7 @@ function Order({ order }) {
             </div>
             <div>
               <small>Address</small>
-              <span>Jalan kasuari no 88</span>
+              <span>{order.address}</span>
             </div>
             <div>
               <small>Total</small>
@@ -70,11 +65,11 @@ function Order({ order }) {
         </div>
         <div className="order__payments">
           <div>
-            <h2>Total Paid: $900</h2>
-            <span>
+            <h2>Total Paid: ${order.total}</h2>
+            <p>
               Thank you for ordering our product, we'll be there in the blink of
               the eye!
-            </span>
+            </p>
           </div>
           <button className="btn btn--paid">
             <BsBagCheck /> Paid
