@@ -14,13 +14,10 @@
     gap: 4%;
   }
   &__details {
-    // border: 1px solid #000;
     display: grid;
     gap: 1rem;
     color: $color-black;
-
     &-header {
-      // border: 1px solid #000;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.2rem;
@@ -54,12 +51,6 @@
   }
 
   // MEDIA-QUERIES
-  @include display(tab-land) {
-    &__details {
-      &-header {
-      }
-    }
-  }
   @include display(phone) {
     background: transparent;
     &__container {

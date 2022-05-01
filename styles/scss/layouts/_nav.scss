@@ -47,11 +47,8 @@
       transform: scale(1.5);
     }
   }
+
   // MEDIA-QUERIES
-  @include display(tab-land) {
-  }
-  @include display(tab-port) {
-  }
   @include display(phone) {
     &__logo {
       display: none;

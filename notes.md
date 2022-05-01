@@ -10,14 +10,14 @@
 - [x] size icon change
 - [x] remove item cart dispatch
 - [ ] typography group style
-- [ ] uninstall material icon
+- [x] uninstall material icon
 - [x] title product touppercase
 - [x] line height p product details/ semua
 - [x] 100 vh di phone bagian gambar
 - [x] tampilkan semua order cus (order list - diklik oke order/id)
 - [x] meta tag title masih local hos di beberapa page
 - [ ] cek display ofnt block saaat sdh deploy, cek hard refresh (di _document.js)
-- [ ] branch dev buat branch dr situ nanti merge ke dev, trus dev ke main
+- [ ] branch dev buat branch dr situ nanti merge ke dev, trus dev ke main (paypal)
 - [ ] ganti assets semua product gelato
 - [ ] update assets
 

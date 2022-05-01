@@ -35,7 +35,6 @@ img {
 }
 
 .btn {
-  @extend %shadow;
   width: max-content;
   display: inline-block;
 
@@ -61,7 +60,5 @@ img {
   // MEDIA-QUERIES
   @include display(phone) {
     padding: 1rem 2rem;
-  }
-  @include display(sm-phone) {
   }
 }

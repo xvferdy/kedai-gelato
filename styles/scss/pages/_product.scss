@@ -12,8 +12,6 @@
     grid-template-columns: 1fr 1fr;
   }
   &__showcase {
-    // border: 1px solid #000;
-
     display: grid;
     justify-items: start;
     align-items: center;
@@ -22,11 +20,8 @@
     }
   }
   &__details {
-    // border: 1px solid rgb(122, 4, 4);
     padding: 0 8.4rem;
-
     color: $color-black;
-    // background-color: rgb(146, 58, 58);
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -87,7 +82,6 @@
           padding: 1.5rem;
           max-width: 20rem;
           background-color: darken($color-light, 3%);
-
           &::placeholder {
             color: lightgray;
           }
@@ -145,7 +139,6 @@
         form {
           display: flex;
           flex-direction: column;
-          // border: 1px solid #000;
           gap: 1.2rem;
         }
       }
