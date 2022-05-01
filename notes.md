@@ -2,36 +2,40 @@
 
 ## Todos
 **Easy**
-- [ ] `clamp()`
-- [ ] perbaiki meta tag
-- [ ] cek display ofnt block saaat sdh deploy, cek hard refresh
-- [ ] footer phone responsive
-- [ ] new logo
-- [ ] format price decima
+- [x] `clamp()`
+- [x] perbaiki meta tag
+- [x] footer phone responsive
+- [x] new logo
+- [x] format price decima
+- [x] size icon change
+- [x] remove item cart dispatch
 - [ ] typography group style
-- [ ] size icon change
-- [ ] remove item cart dispatch
 - [ ] uninstall material icon
-- [ ] ganti assets semua product gelato
-- [ ] title product touppercase
-- [ ] line height p product details/ semua
-- [ ] kopi ganti
-- [ ] 100 vh di phone bagian gambar
-- [ ] buat baru modal cod cash
-- [ ] tampilkan semua order cus (order list - diklik oke order/id)
+- [x] title product touppercase
+- [x] line height p product details/ semua
+- [x] 100 vh di phone bagian gambar
+- [x] tampilkan semua order cus (order list - diklik oke order/id)
+- [x] meta tag title masih local hos di beberapa page
+- [ ] cek display ofnt block saaat sdh deploy, cek hard refresh (di _document.js)
 - [ ] branch dev buat branch dr situ nanti merge ke dev, trus dev ke main
+- [ ] ganti assets semua product gelato
+- [ ] update assets
 
 **Hard**
-- [ ] failed contrass
-- [ ] firefox scroll restore bug (firefox)
+- [x] failed contrass
 - [ ] ngload
 - [ ] input radion on size. pakai efek on tap saja animation
+- [x] ganti pr1 krn size tidak sesuai
+- [x] no cart list ui
+- [x] no order ui
+- [ ] periksa orders/safsdf apakah 404 saat sdh deploy
+
+**Optional**
 - [ ] drop shadow product, cart, product, ect
-- [ ] ganti pr1 krn size tidak sesuai
-- [ ] no cart list ui
-- [ ] no order ui
+- [ ] firefox scroll restore bug (firefox)
 - [ ] alert and confirm modal change
-- [ ] periksa orders/safsdf apakah 404
+- [ ] kopi ganti
+
 
 ## Timeline
 - main 28 apr

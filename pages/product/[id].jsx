@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import Head from "next/head";
 
 // react icon
 import { MdOutlineIcecream } from "react-icons/md";
@@ -52,110 +53,122 @@ function Product({ product }) {
   };
 
   return (
-    <section className="product">
-      <div className="title">
-        {/* <h2>Details</h2> */}
-        {/* <h2>Product Details</h2> */}
-      </div>
-      <div className="container product__container">
-        <div className="product__showcase">
-          <Image src={product.img} width={500} height={700} alt="name" />
+    <>
+      <Head>
+        <title>{product.title}</title>
+        <meta name="keyword" content="Ice Cream, Gelato, Kedai" />
+        <link rel="icon" href="/favicon2.ico" />
+      </Head>
+
+      <section className="product">
+        <div className="title">
+          {/* <h2>Details</h2> */}
+          {/* <h2>Product Details</h2> */}
         </div>
-        <div className="product__details">
-          <h2 className="product__details-price">
-            $ {dollarUSLocale.format(priceTotal)}
-          </h2>
-
-          <p className="product__details-description">❝{product.desc}❞</p>
-          <h2 className="product__details-name">{product.title}</h2>
-
-          {/* SIZE */}
-          <div className="product__details-size">
-            <p>Choose the size</p>
-            <div className="size-list">
-              {product.prices.map((size) => (
-                <Badge
-                  key={size._id}
-                  badgeContent={size.text}
-                  max={10}
-                  sx={{
-                    ".MuiBadge-badge": {
-                      fontSize: 12,
-                      height: 15,
-                      minWidth: 18,
-                      backgroundColor: "#ffc743",
-                      cursor: "default",
-                      letterSpacing: 0,
-                      color: "#141414",
-                    },
-                  }}
-                >
-                  <MdOutlineIcecream
-                    className="size-icon"
-                    onClick={() => setPrizeSize(size.price)}
-                  />
-                </Badge>
-              ))}
-            </div>
+        <div className="container product__container">
+          <div className="product__showcase">
+            <Image src={product.img} width={500} height={700} alt="name" />
           </div>
+          <div className="product__details">
+            <h2 className="product__details-price">
+              $ {dollarUSLocale.format(priceTotal)}
+            </h2>
 
-          {/* TOPPINGS */}
-          <div className="product__details-toppings">
-            <p>Additional topping</p>
-            <form autoComplete="off">
-              {product.extraToppings.map((topping) => (
-                <div key={topping._id}>
-                  <input
-                    type="checkbox"
-                    id={topping.text}
-                    name={topping.text}
-                    onChange={(e) => {
-                      e.target.checked
-                        ? (setPrizeTopping(prizeTopping + topping.price),
-                          setExtras((prev) => [...prev, topping]))
-                        : (setPrizeTopping(prizeTopping - topping.price),
-                          setExtras(
-                            extras.filter((extra) => extra._id !== topping._id)
-                          ));
+            <p className="product__details-description">❝{product.desc}❞</p>
+            <h2 className="product__details-name">
+              {product.title.toUpperCase()}
+            </h2>
+
+            {/* SIZE */}
+            <div className="product__details-size">
+              <p>Choose the size</p>
+              <div className="size-list">
+                {product.prices.map((size) => (
+                  <Badge
+                    key={size._id}
+                    badgeContent={size.text}
+                    max={10}
+                    sx={{
+                      ".MuiBadge-badge": {
+                        fontSize: 12,
+                        height: 15,
+                        minWidth: 18,
+                        backgroundColor: "#ffc743",
+                        cursor: "default",
+                        letterSpacing: 0,
+                        color: "#141414",
+                      },
                     }}
-                  />
-                  <label htmlFor={topping.text}>{topping.text}</label>
-                </div>
-              ))}
-            </form>
-          </div>
+                  >
+                    <MdOutlineIcecream
+                      className="size-icon"
+                      onClick={() => setPrizeSize(size.price)}
+                    />
+                  </Badge>
+                ))}
+              </div>
+            </div>
 
-          {/* QUANTITY */}
-          <div className="product__details-quantity">
-            <p>Quantity</p>
-            <form
-              autoComplete="off"
-              style={{ display: "inline" }}
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleAddProduct();
-              }}
-            >
-              <input
-                className="qty"
-                type="number"
-                value={quantity.toString()}
-                placeholder="Ex: 2"
-                min="1"
-                step="1"
-                onChange={(e) => {
-                  setQuantity(Number(e.target.value));
+            {/* TOPPINGS */}
+            <div className="product__details-toppings">
+              <p>Additional topping</p>
+              <form autoComplete="off">
+                {product.extraToppings.map((topping) => (
+                  <div key={topping._id}>
+                    <input
+                      type="checkbox"
+                      id={topping.text}
+                      name={topping.text}
+                      onChange={(e) => {
+                        e.target.checked
+                          ? (setPrizeTopping(prizeTopping + topping.price),
+                            setExtras((prev) => [...prev, topping]))
+                          : (setPrizeTopping(prizeTopping - topping.price),
+                            setExtras(
+                              extras.filter(
+                                (extra) => extra._id !== topping._id
+                              )
+                            ));
+                      }}
+                    />
+                    <label htmlFor={topping.text}>{topping.text}</label>
+                  </div>
+                ))}
+              </form>
+            </div>
+
+            {/* QUANTITY */}
+            <div className="product__details-quantity">
+              <p>Quantity</p>
+              <form
+                autoComplete="off"
+                style={{ display: "inline" }}
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleAddProduct();
                 }}
-              />
-            </form>
-          </div>
+              >
+                <input
+                  className="qty"
+                  type="number"
+                  value={quantity.toString()}
+                  placeholder="Ex: 2"
+                  min="1"
+                  step="1"
+                  onChange={(e) => {
+                    setQuantity(Number(e.target.value));
+                  }}
+                />
+              </form>
+            </div>
 
-          <button className="btn btn--primary" onClick={handleAddProduct}>
-            Add to Cart
-          </button>
+            <button className="btn btn--primary" onClick={handleAddProduct}>
+              Add to Cart
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

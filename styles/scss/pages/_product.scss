@@ -113,6 +113,7 @@
       gap: 2.4rem;
     }
     &__showcase {
+      min-height: calc(100vh - 16rem);
       & > * {
         transform: translateX(0);
       }

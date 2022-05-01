@@ -8,10 +8,10 @@ export default function Home({ products }) {
     <>
       <Head>
         <title>Kedai Gelato</title>
-        <meta name="keyword" content="Ice Cream, Gelato" />
+        <meta name="keyword" content="Ice Cream, Gelato, Kedai" />
         <meta name="description" content="Buy your favourite ice cream" />
         <meta name="author" content="Berlianto Ferdynand Pongbubun" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon2.ico" />
       </Head>
 
       <section id="home" className="home">
@@ -34,7 +34,7 @@ export default function Home({ products }) {
                   alt={product.title}
                 />
               </div>
-              <h3>{product.title}</h3>
+              <h3>{product.title.toUpperCase()}</h3>
               <span>⭒ ⭒ ⭒</span>
               <p>
                 {product.desc.length > 135
