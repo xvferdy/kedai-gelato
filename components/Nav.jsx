@@ -43,7 +43,7 @@ function Nav() {
             </Link>
           </li>
           <li>
-            <Link href="/orders/1" passHref>
+            <Link href="/orders" passHref>
               <a>Orders</a>
             </Link>
           </li>
