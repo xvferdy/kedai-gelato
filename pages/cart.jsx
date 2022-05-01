@@ -99,61 +99,74 @@ function cart() {
             <small>Total</small>
             <small>Remove</small>
           </div>
-
-          {cart.products?.map((product, idx) => (
-            <div key={idx} className="cart__details-item">
-              <div className="item-image">
-                <Image
-                  src={product.img}
-                  width={100}
-                  height={140}
-                  alt={product.title}
-                />
-              </div>
-              <span className="item-name">{product.title}</span>
-              <div className="item-topping">
-                {product.extras.length <= 0 ? (
-                  <small>no toppings</small>
-                ) : (
-                  product.extras.map((extra, idx) => (
-                    <span key={extra._id}>
-                      {extra.text}
-                      {idx < product.extras.length - 1 && ","}
-                      &nbsp;
-                    </span>
-                  ))
-                )}
-              </div>
-              <span className="item-price">${product.priceTotalNonQty}</span>
-              <span className="item-quantity">{product.quantity}</span>
-              <span className="item-total">
-                ${product.priceTotalNonQty * product.quantity}
-              </span>
-              <Tooltip
-                title={
-                  <p style={{ color: "#fff", padding: "0.5rem", fontSize: 14 }}>
-                    Remove
-                  </p>
-                }
-                placement="top"
-                disableRipple
-                className="delete"
-                onClick={() =>
-                  confirm("Remove from cart?") &&
-                  dispatch(
-                    removeProduct({
-                      id: product.reduxId,
-                      price: product.priceTotalNonQty * product.quantity,
-                    })
-                  )
-                }
-              >
-                <IconButton>
-                  <BsTrash />
-                </IconButton>
-              </Tooltip>
-            </div>
-          ))}
+          {cart.products?.length <= 0 ? (
+            <small>Basket is empty . . .</small>
+          ) : (
+            <>
+              {cart.products?.map((product, idx) => (
+                <div key={idx} className="cart__details-item">
+                  <div className="item-image">
+                    <Image
+                      src={product.img}
+                      width={100}
+                      height={140}
+                      alt={product.title}
+                    />
+                  </div>
+                  <span className="item-name">{product.title}</span>
+                  <div className="item-topping">
+                    {product.extras.length <= 0 ? (
+                      <small>no toppings</small>
+                    ) : (
+                      product.extras.map((extra, idx) => (
+                        <span key={extra._id}>
+                          {extra.text}
+                          {idx < product.extras.length - 1 && ","}
+                          &nbsp;
+                        </span>
+                      ))
+                    )}
+                  </div>
+                  <span className="item-price">
+                    ${product.priceTotalNonQty}
+                  </span>
+                  <span className="item-quantity">{product.quantity}</span>
+                  <span className="item-total">
+                    ${product.priceTotalNonQty * product.quantity}
+                  </span>
+                  <Tooltip
+                    title={
+                      <p
+                        style={{
+                          color: "#fff",
+                          padding: "0.5rem",
+                          fontSize: 14,
+                        }}
+                      >
+                        Remove
+                      </p>
+                    }
+                    placement="top"
+                    disableRipple
+                    className="delete"
+                    onClick={() =>
+                      confirm("Remove from cart?") &&
+                      dispatch(
+                        removeProduct({
+                          id: product.reduxId,
+                          price: product.priceTotalNonQty * product.quantity,
+                        })
+                      )
+                    }
+                  >
+                    <IconButton>
+                      <BsTrash />
+                    </IconButton>
+                  </Tooltip>
+                </div>
+              ))}
+            </>
+          )}
         </div>
         <div className="cart__payments">
           <div>

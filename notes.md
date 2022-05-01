@@ -31,6 +31,7 @@
 - [ ] no cart list ui
 - [ ] no order ui
 - [ ] alert and confirm modal change
+- [ ] periksa orders/safsdf apakah 404
 
 ## Timeline
 - main 28 apr

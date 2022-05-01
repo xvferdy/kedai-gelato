@@ -94,3 +94,31 @@ export const getServerSideProps = async (ctx) => {
     },
   };
 };
+
+// export const getStaticPaths = async () => {
+//   const res = await fetch(`http://localhost:3000/api/orders`);
+//   const data = await res.json();
+//   const paths = data.map((order) => ({
+//     params: {
+//       id: order._id,
+//     },
+//   }));
+//   console.log(paths);
+//   return {
+//     paths: paths,
+//     fallback: false,
+//   };
+// };
+
+// export const getStaticProps = async (ctx) => {
+//   const { id } = ctx.params;
+
+//   const res = await fetch(`http://localhost:3000/api/orders/${id}`);
+//   const data = await res.json();
+
+//   return {
+//     props: {
+//       order: data,
+//     },
+//   };
+// };
