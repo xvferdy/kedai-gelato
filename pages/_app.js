@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import { saveState } from "../redux/localStorage";
 import { debounce } from "debounce";
 
+import { SnackbarProvider } from "notistack";
+
 store.subscribe(
   debounce(() => {
     saveState(store.getState());
@@ -17,7 +19,12 @@ function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <Layout>
-        <Component {...pageProps} />
+        <SnackbarProvider
+          maxSnack={3}
+          style={{ fontSize: "142.5%", fontWeight: 300, letterSpacing: 1 }}
+        >
+          <Component {...pageProps} />
+        </SnackbarProvider>
       </Layout>
     </Provider>
   );

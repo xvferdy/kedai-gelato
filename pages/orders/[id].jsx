@@ -44,7 +44,7 @@ function Order({ order }) {
               </div>
               <div>
                 <small>Total</small>
-                <span>${order.total}</span>
+                <span>${dollarUSLocale.format(order.total)}</span>
               </div>
             </div>
 

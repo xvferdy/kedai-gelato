@@ -10,6 +10,7 @@
 - [x] size icon change
 - [x] remove item cart dispatch
 - [ ] typography group style
+- [ ] env.sample
 - [x] uninstall material icon
 - [x] title product touppercase
 - [x] line height p product details/ semua

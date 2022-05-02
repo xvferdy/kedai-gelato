@@ -7,6 +7,7 @@ import { MdOutlineIcecream } from "react-icons/md";
 
 // mui
 import Badge from "@mui/material/Badge";
+import { useSnackbar } from "notistack";
 
 // redux related
 import { addProduct } from "../../redux/cartSlice";
@@ -22,6 +23,11 @@ function Product({ product }) {
     product.prices[0].price
   );
   let dollarUSLocale = Intl.NumberFormat("en-US");
+  const { enqueueSnackbar } = useSnackbar();
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+  console.log(cart);
+
   useEffect(() => {
     setPriceTotal((prizeSize + prizeTopping) * quantity);
   }, [prizeSize, prizeTopping, quantity]);
@@ -29,13 +35,10 @@ function Product({ product }) {
     setPriceTotalNonQty(prizeSize + prizeTopping);
   }, [prizeSize, prizeTopping]);
 
-  const dispatch = useDispatch();
-  const cart = useSelector((state) => state.cart);
-  // console.log(cart);
-
-  const handleAddProduct = () => {
+  const handleAddProduct = (variant) => {
     if (quantity <= 0 || quantity.toString().includes(".")) {
-      return alert("Error!");
+      // return alert("Error!");
+      return enqueueSnackbar("Failed to add to cart", { variant });
     }
     dispatch(
       addProduct({
@@ -49,6 +52,7 @@ function Product({ product }) {
             : 1,
       })
     );
+    enqueueSnackbar("Successfully added to the cart", { variant });
   };
 
   return (
@@ -69,13 +73,12 @@ function Product({ product }) {
             <Image src={product.img} width={500} height={700} alt="name" />
           </div>
           <div className="product__details">
-            <h2 className="product__details-price">
-              $ {dollarUSLocale.format(priceTotal)}
-            </h2>
-
-            <p className="product__details-description">❝{product.desc}❞</p>
             <h2 className="product__details-name">
               {product.title.toUpperCase()}
+            </h2>
+            <p className="product__details-description">❝{product.desc}❞</p>
+            <h2 className="product__details-price">
+              $ {dollarUSLocale.format(priceTotal)}
             </h2>
 
             {/* SIZE */}
@@ -161,7 +164,14 @@ function Product({ product }) {
               </form>
             </div>
 
-            <button className="btn btn--primary" onClick={handleAddProduct}>
+            <button
+              className="btn btn--primary"
+              onClick={() =>
+                quantity <= 0 || quantity.toString().includes(".")
+                  ? handleAddProduct("error")
+                  : handleAddProduct("success")
+              }
+            >
               Add to Cart
             </button>
           </div>
