@@ -12,8 +12,6 @@
     grid-template-columns: 1fr 1fr;
   }
   &__showcase {
-    // border: 1px solid #000;
-
     display: grid;
     justify-items: start;
     align-items: center;
@@ -22,10 +20,8 @@
     }
   }
   &__details {
-    // border: 1px solid rgb(122, 4, 4);
     padding: 0 8.4rem;
-    color: $color-grey;
-    // background-color: rgb(146, 58, 58);
+    color: $color-black;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -34,6 +30,7 @@
     }
     &-description {
       font-style: italic;
+      color: $color-grey;
     }
     &-name {
       color: $color-primary;
@@ -44,6 +41,18 @@
       .size-list {
         display: flex;
         gap: 7rem;
+
+        label {
+          display: inline-block;
+          height: max-content;
+          border: 2px solid transparent;
+        }
+        input[type="radio"] {
+          display: none;
+          &:checked + label {
+            border: 2px dotted $color-black;
+          }
+        }
         & > *:nth-child(1) {
           .size-icon {
             font-size: 3rem;
@@ -67,8 +76,6 @@
     &-toppings {
       display: grid;
       gap: 0.7rem;
-      p {
-      }
       form {
         display: flex;
         gap: 2.2rem;
@@ -81,7 +88,7 @@
       display: grid;
       gap: 0.7rem;
       form {
-        input {
+        input.qty {
           padding: 1.5rem;
           max-width: 20rem;
           background-color: darken($color-light, 3%);
@@ -110,12 +117,14 @@
       gap: 2.4rem;
     }
     &__showcase {
+      min-height: calc(100vh - 16rem);
       & > * {
         transform: translateX(0);
       }
     }
 
     &__details {
+      padding: 0;
       align-items: center;
       &-description {
         text-align: center;
@@ -130,7 +139,7 @@
           *:nth-child(2),
           *:nth-child(3) {
             .size-icon {
-              font-size: 3rem;
+              font-size: 3.9rem;
               cursor: pointer;
             }
           }
@@ -140,7 +149,6 @@
         form {
           display: flex;
           flex-direction: column;
-          // border: 1px solid #000;
           gap: 1.2rem;
         }
       }

@@ -1,14 +1,28 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-// material
+// mui
 import Badge from "@mui/material/Badge";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
-// react-icons
+// react-icon
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
+// redux related
+import { useSelector } from "react-redux";
+
+// framer
+import { motion, AnimatePresence } from "framer-motion";
+
 function Nav() {
+  const [clientQty, setClientQty] = useState(0);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const router = useRouter();
+  useEffect(() => {
+    setClientQty(totalQuantity);
+  }, [totalQuantity]);
+
   return (
     <nav className="nav">
       <div className="container nav__container">
@@ -27,13 +41,15 @@ function Nav() {
 
         {/* LIST */}
         <ul className="nav__list">
-          <li>
+          <li className={router.pathname == "/" ? "nav__list--active" : ""}>
             <Link href="/" passHref>
               <a>Homepage</a>
             </Link>
           </li>
-          <li>
-            <Link href="/orders/1" passHref>
+          <li
+            className={router.pathname == "/orders" ? "nav__list--active" : ""}
+          >
+            <Link href="/orders" passHref>
               <a>Orders</a>
             </Link>
           </li>
@@ -42,7 +58,7 @@ function Nav() {
         <Link href="/cart" passHref>
           <div className="nav__cart">
             <Badge
-              badgeContent={4}
+              badgeContent={clientQty}
               max={10}
               sx={{
                 ".MuiBadge-badge": {

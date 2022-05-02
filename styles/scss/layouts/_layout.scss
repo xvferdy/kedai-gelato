@@ -22,6 +22,7 @@ section {
   @include display(tab-port) {
   }
   @include display(phone) {
+    padding: calc(7rem + 3rem) 0;
   }
 }
 
