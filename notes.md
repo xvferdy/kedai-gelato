@@ -17,16 +17,16 @@
 - [x] 100 vh di phone bagian gambar
 - [x] tampilkan semua order cus (order list - diklik oke order/id)
 - [x] meta tag title masih local hos di beberapa page
+- [x] ganti assets semua product gelato
 - [ ] cek display ofnt block saaat sdh deploy, cek hard refresh (di _document.js)
 - [ ] branch dev buat branch dr situ nanti merge ke dev, trus dev ke main (paypal)
-- [ ] ganti assets semua product gelato
 - [ ] update assets
 - [ ] screenshot preview mobile after DEPLOY
 - [ ] perhatikan load time gif di cart
 
 **Hard**
 - [x] failed contrass
-- [ ] ngload
+- [x] ngload
 - [ ] input radion on size. pakai efek on tap saja animation
 - [x] ganti pr1 krn size tidak sesuai
 - [x] no cart list ui

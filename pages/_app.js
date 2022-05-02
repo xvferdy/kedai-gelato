@@ -8,6 +8,7 @@ import { saveState } from "../redux/localStorage";
 import { debounce } from "debounce";
 
 import { SnackbarProvider } from "notistack";
+import NextNProgress from "nextjs-progressbar";
 
 store.subscribe(
   debounce(() => {
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
           maxSnack={3}
           style={{ fontSize: "142.5%", fontWeight: 300, letterSpacing: 1 }}
         >
+          <NextNProgress />
           <Component {...pageProps} />
         </SnackbarProvider>
       </Layout>
