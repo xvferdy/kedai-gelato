@@ -216,16 +216,19 @@ function Product({ product }) {
               </form>
             </motion.div>
 
-            <button
+            <motion.button
               className="btn btn--primary"
               onClick={() =>
                 quantity <= 0 || quantity.toString().includes(".")
                   ? handleAddProduct("error")
                   : handleAddProduct("success")
               }
+              variants={fadeInUp}
+              whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
+              whileTap={{ scale: 0.85, transition: { duration: 0.01 } }}
             >
               Add to Cart
-            </button>
+            </motion.button>
           </motion.div>
         </div>
       </motion.section>

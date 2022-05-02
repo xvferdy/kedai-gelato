@@ -23,7 +23,7 @@ import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { reset, removeProduct } from "../redux/cartSlice";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 function cart() {
   const [cart, setCart] = useState([]);
@@ -106,7 +106,7 @@ function cart() {
               <small className="header-price">Price</small>
               <small>Qty</small>
               <small>Total</small>
-              <small>Remove</small>
+              <small onClick={() => dispatch(reset())}>Remove</small>
             </div>
 
             {cart.products?.length <= 0 ? (

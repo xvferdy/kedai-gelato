@@ -11,7 +11,7 @@ import { reset, removeProduct } from "../redux/cartSlice";
 // react-icon
 import { BsTrash } from "react-icons/bs";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 function CartItem({ product, idx }) {
   const dispatch = useDispatch();
   let dollarUSLocale = Intl.NumberFormat("en-US");
@@ -22,11 +22,14 @@ function CartItem({ product, idx }) {
       animate="visible"
       exit="removed"
       variants={{
-        hidden: () => ({ opacity: 0, y: -50 * idx }),
-        visible: () => ({
+        hidden: { opacity: 0, y: -50 * idx },
+        visible: {
           opacity: 1,
           y: 0,
-        }),
+          transition: {
+            delay: 0.2,
+          },
+        },
         removed: {
           opacity: 0,
           x: -100,

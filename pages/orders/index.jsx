@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 function OrderList({ orders }) {
   let dollarUSLocale = Intl.NumberFormat("en-US");
   return (
@@ -25,13 +26,33 @@ function OrderList({ orders }) {
                 {orders
                   .slice(0)
                   .reverse()
-                  .map((order) => (
+                  .map((order, idx) => (
                     <Link
                       key={order._id}
                       href={`/orders/${order._id}`}
                       passHref
                     >
-                      <a className="order-list__details-header">
+                      <motion.a
+                        className="order-list__details-header"
+                        initial="hidden"
+                        animate="visible"
+                        exit="removed"
+                        variants={{
+                          hidden: { opacity: 0, y: -50 * idx },
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                              duration: 0.2,
+                              delay: 0.1,
+                            },
+                          },
+                          removed: {
+                            opacity: 0,
+                            x: -100,
+                          },
+                        }}
+                      >
                         <div>
                           <small>Customer</small>
                           <span>{order.customer}</span>
@@ -44,7 +65,7 @@ function OrderList({ orders }) {
                           <small>Total</small>
                           <span>${dollarUSLocale.format(order.total)}</span>
                         </div>
-                      </a>
+                      </motion.a>
                     </Link>
                   ))}
               </>
