@@ -2,6 +2,32 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
+import { motion, AnimatePresence } from "framer-motion";
+
+const stagger = {
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+let easing = [0.6, -0.05, 0.01, 0.99];
+const fadeInUp = {
+  hidden: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
+
 export default function Home({ products }) {
   return (
     <>
@@ -13,17 +39,24 @@ export default function Home({ products }) {
         <link rel="icon" href="/favicon2.ico" />
       </Head>
 
-      <section id="home" className="home">
+      <motion.section
+        id="home"
+        className="home"
+        initial="hidden"
+        animate="visible"
+        exit={{ opacity: 0 }}
+      >
         <div className="title">
           <h1>Kedai Gelato</h1>
           <p>100% Modern Taste!</p>
           <h2>Products</h2>
         </div>
-        <div className="container home__container">
-          {products.map((product) => (
-            <div
+        <motion.div className="container home__container" variants={stagger}>
+          {products.map((product, idx) => (
+            <motion.div
               key={product._id}
               className={` home__product--${product.class}`}
+              variants={fadeInUp}
             >
               <div className="home__product-image">
                 <Image
@@ -43,10 +76,10 @@ export default function Home({ products }) {
               <Link href={`/product/${product._id}`} passHref>
                 <a className="btn btn--primary">See Details</a>
               </Link>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </>
   );
 }

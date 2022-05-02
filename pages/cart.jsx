@@ -22,6 +22,13 @@ import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { reset, removeProduct } from "../redux/cartSlice";
 
+import { motion, AnimatePresence } from "framer-motion";
+
+const item = {
+  visible: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, x: -100 },
+};
+
 function cart() {
   const [cart, setCart] = useState([]);
   const [cod, setCod] = useState(false);
@@ -81,7 +88,7 @@ function cart() {
         <meta name="keyword" content="Ice Cream, Gelato, Kedai" />
         <link rel="icon" href="/favicon2.ico" />
       </Head>
-      <section className="cart">
+      <motion.section className="cart" initial="hidden" animate="visible">
         <div className="title">
           {/* <p>details</p>
         <h2>cart page</h2> */}
@@ -108,69 +115,77 @@ function cart() {
             ) : (
               <>
                 {cart.products?.map((product, idx) => (
-                  <div key={idx} className="cart__details-item">
-                    <div className="item-image">
-                      <Image
-                        src={product.img}
-                        width={100}
-                        height={140}
-                        alt={product.title}
-                      />
-                    </div>
-                    <span className="item-name">{product.title}</span>
-                    <div className="item-topping">
-                      {product.extras.length <= 0 ? (
-                        <small>no toppings</small>
-                      ) : (
-                        product.extras.map((extra, idx) => (
-                          <span key={extra._id}>
-                            {extra.text}
-                            {idx < product.extras.length - 1 && ","}
-                            &nbsp;
-                          </span>
-                        ))
-                      )}
-                    </div>
-                    <span className="item-price">
-                      ${dollarUSLocale.format(product.priceTotalNonQty)}
-                    </span>
-                    <span className="item-quantity">{product.quantity}</span>
-                    <span className="item-total">
-                      $
-                      {dollarUSLocale.format(
-                        product.priceTotalNonQty * product.quantity
-                      )}
-                    </span>
-                    <Tooltip
-                      title={
-                        <p
-                          style={{
-                            color: "#fff",
-                            padding: "0.5rem",
-                            fontSize: 14,
-                          }}
-                        >
-                          Remove
-                        </p>
-                      }
-                      placement="top"
-                      disableRipple
-                      className="delete"
-                      onClick={() =>
-                        confirm("Remove from cart?") &&
-                        dispatch(
-                          removeProduct({
-                            id: product.reduxId,
-                            price: product.priceTotalNonQty * product.quantity,
-                          })
-                        )
-                      }
+                  <AnimatePresence exitBeforeEnter>
+                    <motion.div
+                      key={idx}
+                      className="cart__details-item"
+                      variants={item}
+                      exit={{ opacity: 0, y: 100 }}
                     >
-                      <IconButton>
-                        <BsTrash />
-                      </IconButton>
-                    </Tooltip>
-                  </div>
+                      <div className="item-image">
+                        <Image
+                          src={product.img}
+                          width={100}
+                          height={140}
+                          alt={product.title}
+                        />
+                      </div>
+                      <span className="item-name">{product.title}</span>
+                      <div className="item-topping">
+                        {product.extras.length <= 0 ? (
+                          <small>no toppings</small>
+                        ) : (
+                          product.extras.map((extra, idx) => (
+                            <span key={extra._id}>
+                              {extra.text}
+                              {idx < product.extras.length - 1 && ","}
+                              &nbsp;
+                            </span>
+                          ))
+                        )}
+                      </div>
+                      <span className="item-price">
+                        ${dollarUSLocale.format(product.priceTotalNonQty)}
+                      </span>
+                      <span className="item-quantity">{product.quantity}</span>
+                      <span className="item-total">
+                        $
+                        {dollarUSLocale.format(
+                          product.priceTotalNonQty * product.quantity
+                        )}
+                      </span>
+                      <Tooltip
+                        title={
+                          <p
+                            style={{
+                              color: "#fff",
+                              padding: "0.5rem",
+                              fontSize: 14,
+                            }}
+                          >
+                            Remove
+                          </p>
+                        }
+                        placement="top"
+                        disableRipple
+                        className="delete"
+                        onClick={() =>
+                          confirm("Remove from cart?") &&
+                          dispatch(
+                            removeProduct({
+                              id: product.reduxId,
+                              price:
+                                product.priceTotalNonQty * product.quantity,
+                            })
+                          )
+                        }
+                      >
+                        <IconButton>
+                          <BsTrash />
+                        </IconButton>
+                      </Tooltip>
+                    </motion.div>
+                  </AnimatePresence>
                 ))}
               </>
             )}
@@ -185,10 +200,20 @@ function cart() {
               <button className="btn btn--primary" onClick={() => setCod(!cod)}>
                 <MdOutlineShoppingBasket className="icon" /> Checkout
               </button>
+
               {cod && (
-                <button className="btn btn--primary" onClick={handleClickOpen}>
-                  Cash On Delivery <FiTruck className="icon" />
-                </button>
+                <>
+                  <button
+                    className="btn btn--primary"
+                    onClick={handleClickOpen}
+                  >
+                    Cash On Delivery <FiTruck className="icon" />
+                  </button>
+                  <button type="button" disabled>
+                    powered by J&T Express.
+                    <FiTruck className="icon" />
+                  </button>
+                </>
               )}
             </div>
           )}
@@ -256,7 +281,7 @@ function cart() {
             </DialogActions>
           </Dialog>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }

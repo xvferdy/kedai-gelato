@@ -13,6 +13,32 @@ import { useSnackbar } from "notistack";
 import { addProduct } from "../../redux/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 
+import { motion, AnimatePresence } from "framer-motion";
+
+let easing = [0.6, -0.05, 0.01, 0.99];
+const stagger = {
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+const fadeInUp = {
+  hidden: {
+    y: 60,
+    opacity: 0,
+    transition: { duration: 0.6, ease: easing },
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
+
 function Product({ product }) {
   const [prizeSize, setPrizeSize] = useState(product.prices[0].price);
   const [prizeTopping, setPrizeTopping] = useState(0);
@@ -63,26 +89,37 @@ function Product({ product }) {
         <link rel="icon" href="/favicon2.ico" />
       </Head>
 
-      <section className="product">
+      <motion.section className="product" initial="hidden" animate="visible">
         <div className="title">
           {/* <h2>Details</h2> */}
           {/* <h2>Product Details</h2> */}
         </div>
         <div className="container product__container">
-          <div className="product__showcase">
+          <motion.div
+            className="product__showcase"
+            animate={{ x: 0, opacity: 1 }}
+            initial={{ x: -200, opacity: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 0.3 }}
+          >
             <Image src={product.img} width={500} height={700} alt="name" />
-          </div>
-          <div className="product__details">
-            <h2 className="product__details-name">
+          </motion.div>
+          <motion.div className="product__details" variants={stagger}>
+            <motion.h2 className="product__details-name" variants={fadeInUp}>
               {product.title.toUpperCase()}
-            </h2>
-            <p className="product__details-description">❝{product.desc}❞</p>
-            <h2 className="product__details-price">
+            </motion.h2>
+            <motion.p
+              className="product__details-description"
+              variants={fadeInUp}
+            >
+              ❝{product.desc}❞
+            </motion.p>
+            <motion.h2 className="product__details-price" variants={fadeInUp}>
               $ {dollarUSLocale.format(priceTotal)}
-            </h2>
+            </motion.h2>
 
             {/* SIZE */}
-            <div className="product__details-size">
+            <motion.div className="product__details-size" variants={fadeInUp}>
               <p>Choose the size</p>
               <div className="size-list">
                 {product.prices.map((size, idx) => (
@@ -118,10 +155,13 @@ function Product({ product }) {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* TOPPINGS */}
-            <div className="product__details-toppings">
+            <motion.div
+              className="product__details-toppings"
+              variants={fadeInUp}
+            >
               <p>Additional topping</p>
               <form autoComplete="off">
                 {product.extraToppings.map((topping) => (
@@ -146,10 +186,13 @@ function Product({ product }) {
                   </div>
                 ))}
               </form>
-            </div>
+            </motion.div>
 
             {/* QUANTITY */}
-            <div className="product__details-quantity">
+            <motion.div
+              className="product__details-quantity"
+              variants={fadeInUp}
+            >
               <p>Quantity</p>
               <form
                 autoComplete="off"
@@ -171,7 +214,7 @@ function Product({ product }) {
                   }}
                 />
               </form>
-            </div>
+            </motion.div>
 
             <button
               className="btn btn--primary"
@@ -183,9 +226,9 @@ function Product({ product }) {
             >
               Add to Cart
             </button>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }

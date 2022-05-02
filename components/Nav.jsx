@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 // mui
 import Badge from "@mui/material/Badge";
@@ -11,9 +12,12 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 // redux related
 import { useSelector } from "react-redux";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 function Nav() {
   const [clientQty, setClientQty] = useState(0);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const router = useRouter();
   useEffect(() => {
     setClientQty(totalQuantity);
   }, [totalQuantity]);
@@ -36,12 +40,14 @@ function Nav() {
 
         {/* LIST */}
         <ul className="nav__list">
-          <li>
+          <li className={router.pathname == "/" ? "nav__list--active" : ""}>
             <Link href="/" passHref>
               <a>Homepage</a>
             </Link>
           </li>
-          <li>
+          <li
+            className={router.pathname == "/orders" ? "nav__list--active" : ""}
+          >
             <Link href="/orders" passHref>
               <a>Orders</a>
             </Link>
