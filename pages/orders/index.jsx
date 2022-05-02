@@ -22,24 +22,31 @@ function OrderList({ orders }) {
               <small>There's no active order right now . . .</small>
             ) : (
               <>
-                {orders.map((order) => (
-                  <Link key={order._id} href={`/orders/${order._id}`} passHref>
-                    <a className="order-list__details-header">
-                      <div>
-                        <small>Customer</small>
-                        <span>{order.customer}</span>
-                      </div>
-                      <div>
-                        <small>Address</small>
-                        <span>{order.address}</span>
-                      </div>
-                      <div>
-                        <small>Total</small>
-                        <span>${dollarUSLocale.format(order.total)}</span>
-                      </div>
-                    </a>
-                  </Link>
-                ))}
+                {orders
+                  .slice(0)
+                  .reverse()
+                  .map((order) => (
+                    <Link
+                      key={order._id}
+                      href={`/orders/${order._id}`}
+                      passHref
+                    >
+                      <a className="order-list__details-header">
+                        <div>
+                          <small>Customer</small>
+                          <span>{order.customer}</span>
+                        </div>
+                        <div>
+                          <small>Address</small>
+                          <span>{order.address}</span>
+                        </div>
+                        <div>
+                          <small>Total</small>
+                          <span>${dollarUSLocale.format(order.total)}</span>
+                        </div>
+                      </a>
+                    </Link>
+                  ))}
               </>
             )}
           </div>

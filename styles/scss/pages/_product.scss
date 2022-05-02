@@ -41,6 +41,18 @@
       .size-list {
         display: flex;
         gap: 7rem;
+
+        label {
+          display: inline-block;
+          height: max-content;
+          border: 2px solid transparent;
+        }
+        input[type="radio"] {
+          display: none;
+          &:checked + label {
+            border: 2px dotted $color-black;
+          }
+        }
         & > *:nth-child(1) {
           .size-icon {
             font-size: 3rem;
@@ -127,7 +139,7 @@
           *:nth-child(2),
           *:nth-child(3) {
             .size-icon {
-              font-size: 3rem;
+              font-size: 3.9rem;
               cursor: pointer;
             }
           }

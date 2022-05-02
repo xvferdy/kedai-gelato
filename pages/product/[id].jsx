@@ -85,28 +85,37 @@ function Product({ product }) {
             <div className="product__details-size">
               <p>Choose the size</p>
               <div className="size-list">
-                {product.prices.map((size) => (
-                  <Badge
-                    key={size._id}
-                    badgeContent={size.text}
-                    max={10}
-                    sx={{
-                      ".MuiBadge-badge": {
-                        fontSize: 12,
-                        height: 15,
-                        minWidth: 18,
-                        backgroundColor: "#ffc743",
-                        cursor: "default",
-                        letterSpacing: 0,
-                        color: "#141414",
-                      },
-                    }}
-                  >
-                    <MdOutlineIcecream
-                      className="size-icon"
-                      onClick={() => setPrizeSize(size.price)}
+                {product.prices.map((size, idx) => (
+                  <div key={size._id}>
+                    <input
+                      type="radio"
+                      id={size.text}
+                      name="size"
+                      value={size.text}
+                      defaultChecked={idx === 0}
+                      onChange={() => setPrizeSize(size.price)}
                     />
-                  </Badge>
+                    <label htmlFor={size.text}>
+                      <Badge
+                        badgeContent={size.text}
+                        max={10}
+                        sx={{
+                          ".MuiBadge-badge": {
+                            fontSize: 12,
+                            height: 15,
+                            minWidth: 18,
+                            backgroundColor: "#ffc743",
+                            cursor: "default",
+                            letterSpacing: 0,
+                            color: "#141414",
+                          },
+                        }}
+                        // onClick={() => setPrizeSize(size.price)}
+                      >
+                        <MdOutlineIcecream className="size-icon" />
+                      </Badge>
+                    </label>
+                  </div>
                 ))}
               </div>
             </div>
