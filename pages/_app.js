@@ -10,8 +10,6 @@ import { debounce } from "debounce";
 import { SnackbarProvider } from "notistack";
 import NextNProgress from "nextjs-progressbar";
 
-import { motion, AnimatePresence } from "framer-motion";
-
 store.subscribe(
   debounce(() => {
     saveState(store.getState());
@@ -26,12 +24,8 @@ function MyApp({ Component, pageProps, router }) {
           maxSnack={3}
           style={{ fontSize: "142.5%", fontWeight: 300, letterSpacing: 1 }}
         >
-          <NextNProgress />
-          {/* <AnimatePresence exitBeforeEnter> */}
-          {/* <div key={router.route}> */}
+          <NextNProgress color="#7FB5FF" options={{ showSpinner: false }} />
           <Component {...pageProps} />
-          {/* </div> */}
-          {/* </AnimatePresence> */}
         </SnackbarProvider>
       </Layout>
     </Provider>

@@ -27,7 +27,7 @@
 **Hard**
 - [x] failed contrass
 - [x] ngload
-- [ ] input radion on size. pakai efek on tap saja animation
+- [x] input radion on size. pakai efek on tap saja animation
 - [x] ganti pr1 krn size tidak sesuai
 - [x] no cart list ui
 - [x] no order ui

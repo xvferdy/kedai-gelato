@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 
+// framer
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 function OrderList({ orders }) {
   let dollarUSLocale = Intl.NumberFormat("en-US");

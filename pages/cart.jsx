@@ -23,6 +23,7 @@ import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { reset, removeProduct } from "../redux/cartSlice";
 
+// framer
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 function cart() {

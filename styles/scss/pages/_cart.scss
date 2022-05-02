@@ -26,6 +26,8 @@
       small:nth-child(7) {
         transition: $transition;
         cursor: pointer;
+        border: 1px dotted $color-grey;
+        border-radius: 0.2rem;
         &:hover {
           color: $color-black;
         }

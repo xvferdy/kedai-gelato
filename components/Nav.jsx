@@ -12,6 +12,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 // redux related
 import { useSelector } from "react-redux";
 
+// framer
 import { motion, AnimatePresence } from "framer-motion";
 
 function Nav() {

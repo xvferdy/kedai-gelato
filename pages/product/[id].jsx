@@ -13,6 +13,7 @@ import { useSnackbar } from "notistack";
 import { addProduct } from "../../redux/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 
+// framer
 import { motion, AnimatePresence } from "framer-motion";
 
 let easing = [0.6, -0.05, 0.01, 0.99];

@@ -11,6 +11,7 @@ import { reset, removeProduct } from "../redux/cartSlice";
 // react-icon
 import { BsTrash } from "react-icons/bs";
 
+// framer
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 function CartItem({ product, idx }) {
   const dispatch = useDispatch();
