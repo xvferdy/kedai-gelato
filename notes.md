@@ -21,6 +21,8 @@
 - [ ] branch dev buat branch dr situ nanti merge ke dev, trus dev ke main (paypal)
 - [ ] ganti assets semua product gelato
 - [ ] update assets
+- [ ] screenshot preview mobile after DEPLOY
+- [ ] perhatikan load time gif di cart
 
 **Hard**
 - [x] failed contrass

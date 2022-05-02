@@ -98,7 +98,13 @@ function cart() {
               <small>Remove</small>
             </div>
             {cart.products?.length <= 0 ? (
-              <small>Basket is empty . . .</small>
+              // <small>Basket is empty . . .</small>
+              <Image
+                src="/assets/empty.gif"
+                width={800}
+                height={800}
+                alt="No product here"
+              />
             ) : (
               <>
                 {cart.products?.map((product, idx) => (
