@@ -2,6 +2,7 @@ import Image from "next/image";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import CartItem from "../components/CartItem";
 
 // react-icon
 import { MdOutlineShoppingBasket } from "react-icons/md";
@@ -24,11 +25,6 @@ import { reset, removeProduct } from "../redux/cartSlice";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-const item = {
-  visible: { opacity: 1, x: 0 },
-  hidden: { opacity: 0, x: -100 },
-};
-
 function cart() {
   const [cart, setCart] = useState([]);
   const [cod, setCod] = useState(false);
@@ -42,6 +38,13 @@ function cart() {
   const cartRedux = useSelector((state) => state.cart);
   const router = useRouter();
   let dollarUSLocale = Intl.NumberFormat("en-US");
+
+  const dummy = [
+    { id: 1, task: "blejar" },
+    { id: 2, task: "game" },
+    { id: 3, task: "makan" },
+  ];
+  const [todos, setTodos] = useState(dummy);
 
   useEffect(() => {
     setCart(cartRedux);
@@ -59,6 +62,7 @@ function cart() {
     setOrderData({ ...orderData, [name]: value });
   };
   console.log(orderData);
+  console.log(cart);
 
   const handleCreateOrder = async (orderData) => {
     try {
@@ -88,7 +92,7 @@ function cart() {
         <meta name="keyword" content="Ice Cream, Gelato, Kedai" />
         <link rel="icon" href="/favicon2.ico" />
       </Head>
-      <motion.section className="cart" initial="hidden" animate="visible">
+      <motion.section className="cart">
         <div className="title">
           {/* <p>details</p>
         <h2>cart page</h2> */}
@@ -104,91 +108,51 @@ function cart() {
               <small>Total</small>
               <small>Remove</small>
             </div>
+
             {cart.products?.length <= 0 ? (
-              // <small>Basket is empty . . .</small>
-              <Image
-                src="/assets/empty.gif"
-                width={800}
-                height={800}
-                alt="No product here"
-              />
-            ) : (
               <>
-                {cart.products?.map((product, idx) => (
-                  <AnimatePresence exitBeforeEnter>
-                    <motion.div
-                      key={idx}
-                      className="cart__details-item"
-                      variants={item}
-                      exit={{ opacity: 0, y: 100 }}
-                    >
-                      <div className="item-image">
-                        <Image
-                          src={product.img}
-                          width={100}
-                          height={140}
-                          alt={product.title}
-                        />
-                      </div>
-                      <span className="item-name">{product.title}</span>
-                      <div className="item-topping">
-                        {product.extras.length <= 0 ? (
-                          <small>no toppings</small>
-                        ) : (
-                          product.extras.map((extra, idx) => (
-                            <span key={extra._id}>
-                              {extra.text}
-                              {idx < product.extras.length - 1 && ","}
-                              &nbsp;
-                            </span>
-                          ))
-                        )}
-                      </div>
-                      <span className="item-price">
-                        ${dollarUSLocale.format(product.priceTotalNonQty)}
-                      </span>
-                      <span className="item-quantity">{product.quantity}</span>
-                      <span className="item-total">
-                        $
-                        {dollarUSLocale.format(
-                          product.priceTotalNonQty * product.quantity
-                        )}
-                      </span>
-                      <Tooltip
-                        title={
-                          <p
-                            style={{
-                              color: "#fff",
-                              padding: "0.5rem",
-                              fontSize: 14,
-                            }}
-                          >
-                            Remove
-                          </p>
-                        }
-                        placement="top"
-                        disableRipple
-                        className="delete"
-                        onClick={() =>
-                          confirm("Remove from cart?") &&
-                          dispatch(
-                            removeProduct({
-                              id: product.reduxId,
-                              price:
-                                product.priceTotalNonQty * product.quantity,
-                            })
-                          )
-                        }
-                      >
-                        <IconButton>
-                          <BsTrash />
-                        </IconButton>
-                      </Tooltip>
-                    </motion.div>
-                  </AnimatePresence>
-                ))}
+                <small>Basket is empty . . .</small>
+                <Image
+                  src="/assets/empty.gif"
+                  width={800}
+                  height={800}
+                  alt="No product here"
+                />
               </>
+            ) : (
+              // <>
+              <AnimatePresence>
+                {cart.products?.map((product, idx) => (
+                  <CartItem key={product.reduxId} product={product} idx={idx} />
+                ))}
+              </AnimatePresence>
+              // </>
             )}
+
+            {/* <AnimatePresence>
+              {cart.products?.map((product, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <span>{product.title}</span>
+                  <button
+                    onClick={() =>
+                      dispatch(
+                        removeProduct({
+                          id: product.reduxId,
+                          price: product.priceTotalNonQty * product.quantity,
+                        })
+                      )
+                    }
+                  >
+                    remove
+                  </button>
+                </motion.div>
+              ))}
+            </AnimatePresence> */}
           </div>
 
           {cart.products?.length >= 1 && (
@@ -202,18 +166,18 @@ function cart() {
               </button>
 
               {cod && (
-                <>
-                  <button
+                <AnimatePresence exitBeforeEnter>
+                  <motion.button
                     className="btn btn--primary"
                     onClick={handleClickOpen}
                   >
                     Cash On Delivery <FiTruck className="icon" />
-                  </button>
+                  </motion.button>
                   <button type="button" disabled>
                     powered by J&T Express.
                     <FiTruck className="icon" />
                   </button>
-                </>
+                </AnimatePresence>
               )}
             </div>
           )}
