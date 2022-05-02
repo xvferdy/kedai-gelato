@@ -2,14 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-// material
+// mui
 import Badge from "@mui/material/Badge";
 
-// react-icons
+// react-icon
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-// redux
-import { useSelector, useDispatch } from "react-redux";
+// redux related
+import { useSelector } from "react-redux";
 
 function Nav() {
   const [clientQty, setClientQty] = useState(0);

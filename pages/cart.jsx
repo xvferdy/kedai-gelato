@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-// icon
+// react-icon
 import { MdOutlineShoppingBasket } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
 import { FiTruck } from "react-icons/fi";
@@ -11,18 +11,16 @@ import { FiTruck } from "react-icons/fi";
 // mui
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
-
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 
-// redux
+// redux related
 import { useSelector, useDispatch } from "react-redux";
-import { addProduct, reset, removeProduct } from "../redux/cartSlice";
+import { reset, removeProduct } from "../redux/cartSlice";
 
 function cart() {
   const [cart, setCart] = useState([]);
@@ -38,7 +36,6 @@ function cart() {
   const router = useRouter();
   let dollarUSLocale = Intl.NumberFormat("en-US");
 
-  console.log(cart);
   useEffect(() => {
     setCart(cartRedux);
   }, [cartRedux]);
@@ -57,14 +54,7 @@ function cart() {
   console.log(orderData);
 
   const handleCreateOrder = async (orderData) => {
-    console.log(orderData);
     try {
-      // const res = await fetch("http://localhost:3000/api/orders", {
-      //   method: "POST",
-      //   body: JSON.stringify(data),
-      // });
-      // return res.json();
-
       const res = await fetch("http://localhost:3000/api/orders", {
         method: "POST",
         headers: {
@@ -206,8 +196,8 @@ function cart() {
             <DialogContent>
               <TextField
                 sx={{ marginBottom: 3 }}
-                inputProps={{ style: { fontSize: "162.5%" } }} // font size of input text
-                InputLabelProps={{ style: { fontSize: "162.5%" } }} // font size of input label
+                inputProps={{ style: { fontSize: "162.5%" } }}
+                InputLabelProps={{ style: { fontSize: "162.5%" } }}
                 autoFocus
                 label="Name"
                 fullWidth
@@ -217,8 +207,8 @@ function cart() {
               />
               <TextField
                 sx={{ marginBottom: 3 }}
-                inputProps={{ style: { fontSize: "162.5%" } }} // font size of input text
-                InputLabelProps={{ style: { fontSize: "162.5%" } }} // font size of input label
+                inputProps={{ style: { fontSize: "162.5%" } }}
+                InputLabelProps={{ style: { fontSize: "162.5%" } }}
                 autoFocus
                 label="Phone Number"
                 fullWidth
@@ -228,8 +218,8 @@ function cart() {
               />
               <TextField
                 sx={{ marginBottom: 3 }}
-                inputProps={{ style: { fontSize: "162.5%" } }} // font size of input text
-                InputLabelProps={{ style: { fontSize: "162.5%" } }} // font size of input label
+                inputProps={{ style: { fontSize: "162.5%" } }}
+                InputLabelProps={{ style: { fontSize: "162.5%" } }}
                 autoFocus
                 label="Address"
                 fullWidth

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Head from "next/head";
 
+// react-icon
 import { BsBagCheck } from "react-icons/bs";
 
 function Order({ order }) {
@@ -96,7 +97,6 @@ export const getServerSideProps = async (ctx) => {
 
   const res = await fetch(`http://localhost:3000/api/orders/${id}`);
   const data = await res.json();
-  console.log(data);
   return {
     props: {
       order: data,
@@ -112,7 +112,6 @@ export const getServerSideProps = async (ctx) => {
 //       id: order._id,
 //     },
 //   }));
-//   console.log(paths);
 //   return {
 //     paths: paths,
 //     fallback: false,

@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import Nav from "../components/Nav";
 import Link from "next/link";
 
 export default function Home({ products }) {
@@ -16,7 +15,7 @@ export default function Home({ products }) {
 
       <section id="home" className="home">
         <div className="title">
-          {/* <h1>Kedai Gelato</h1> */}
+          <h1>Kedai Gelato</h1>
           <p>100% Modern Taste!</p>
           <h2>Products</h2>
         </div>

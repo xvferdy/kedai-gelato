@@ -2,14 +2,14 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Head from "next/head";
 
-// react icon
+// react-icon
 import { MdOutlineIcecream } from "react-icons/md";
 
 // mui
 import Badge from "@mui/material/Badge";
 
-// redux
-import { addProduct, reset } from "../../redux/cartSlice";
+// redux related
+import { addProduct } from "../../redux/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 function Product({ product }) {
@@ -22,7 +22,6 @@ function Product({ product }) {
     product.prices[0].price
   );
   let dollarUSLocale = Intl.NumberFormat("en-US");
-
   useEffect(() => {
     setPriceTotal((prizeSize + prizeTopping) * quantity);
   }, [prizeSize, prizeTopping, quantity]);
@@ -32,7 +31,7 @@ function Product({ product }) {
 
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
+  // console.log(cart);
 
   const handleAddProduct = () => {
     if (quantity <= 0 || quantity.toString().includes(".")) {
@@ -194,7 +193,6 @@ export default Product;
 //   const res = await fetch(`http://localhost:3000/api/products/${id}`);
 
 //   const data = await res.json();
-//   console.log(data);
 //   return {
 //     props: {
 //       product: data,
