@@ -33,7 +33,6 @@ function CartItem({ product, idx }) {
         },
       }}
     >
-      {console.log("render item wit id: " + idx)}
       <div className="item-image">
         <Image src={product.img} width={100} height={140} alt={product.title} />
       </div>

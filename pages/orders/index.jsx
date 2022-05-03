@@ -3,7 +3,6 @@ import Head from "next/head";
 
 import { motion } from "framer-motion";
 function OrderList({ orders }) {
-  console.log(orders);
   let dollarUSLocale = Intl.NumberFormat("en-US");
   return (
     <>

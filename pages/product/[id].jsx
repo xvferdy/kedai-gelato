@@ -49,7 +49,6 @@ function Product({ product }) {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
 
   useEffect(() => {
     setPriceTotal((prizeSize + prizeTopping) * quantity);

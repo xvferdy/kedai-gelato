@@ -49,8 +49,6 @@ function Cart() {
     const { name, value } = e.target;
     setOrderData({ ...orderData, [name]: value });
   };
-  console.log(orderData);
-  console.log(cart);
 
   const handleCreateOrder = async (orderData) => {
     try {
@@ -65,7 +63,6 @@ function Cart() {
       const data = await res.json();
 
       if (res.status === 201) {
-        console.log(data);
         router.push(`/orders/${data._id}`);
         dispatch(reset());
       }
