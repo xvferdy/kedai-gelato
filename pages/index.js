@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { MongoClient } from "mongodb";
 
 // framer
 import { motion, AnimatePresence } from "framer-motion";
@@ -85,13 +86,30 @@ export default function Home({ products }) {
   );
 }
 
+// export const getStaticProps = async (ctx) => {
+//   const res = await fetch(
+//     "https://kedai-gelato-xvferdy.vercel.app/api/products"
+//   );
+//   const data = await res.json();
+
+//   return {
+//     props: {
+//       products: data,
+//     },
+//   };
+// };
+
 export const getStaticProps = async (ctx) => {
-  const res = await fetch("http://localhost:3000/api/products");
-  const data = await res.json();
+  const client = await MongoClient.connect(process.env.MONGODB_URI);
+  const db = client.db();
+  const productCollection = db.collection("products");
+  const products = await productCollection.find().toArray();
+  console.log(products);
+  client.close();
 
   return {
     props: {
-      products: data,
+      products: JSON.parse(JSON.stringify(products)),
     },
   };
 };

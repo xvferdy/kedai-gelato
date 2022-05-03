@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Head from "next/head";
-
+import { MongoClient, ObjectId } from "mongodb";
 // react-icon
 import { MdOutlineIcecream } from "react-icons/md";
 
@@ -266,14 +266,49 @@ export default Product;
 //   };
 // };
 
-export const getServerSideProps = async (ctx) => {
-  const { id } = ctx.params;
-  const res = await fetch(`http://localhost:3000/api/products/${id}`);
-  const data = await res.json();
+// export const getServerSideProps = async (ctx) => {
+//   const { id } = ctx.params;
+//   const res = await fetch(`http://localhost:3000/api/products/${id}`);
+//   const data = await res.json();
+
+//   return {
+//     props: {
+//       product: data,
+//     },
+//   };
+// };
+
+export const getStaticPaths = async () => {
+  const client = await MongoClient.connect(process.env.MONGODB_URI);
+  const db = client.db();
+  const productCollection = db.collection("products");
+  const products = await productCollection.find({}, { _id: 1 }).toArray();
+
+  client.close();
+
+  return {
+    paths: products.map((product) => ({
+      params: { id: product._id.toString() },
+    })),
+    fallback: "blocking", //
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const { id } = context.params;
+
+  const client = await MongoClient.connect(process.env.MONGODB_URI);
+  const db = client.db();
+  const productCollection = db.collection("products");
+  const selectedProduct = await productCollection.findOne({
+    _id: ObjectId(id),
+  });
+  console.log(selectedProduct);
+  client.close();
 
   return {
     props: {
-      product: data,
+      product: JSON.parse(JSON.stringify(selectedProduct)),
     },
   };
 };
