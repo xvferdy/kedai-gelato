@@ -26,7 +26,7 @@ import { reset, removeProduct } from "../redux/cartSlice";
 // framer
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
-function cart() {
+function Cart() {
   const [cart, setCart] = useState([]);
   const [cod, setCod] = useState(false);
   const [open, setOpen] = useState(false);
@@ -251,4 +251,4 @@ function cart() {
   );
 }
 
-export default cart;
+export default Cart;

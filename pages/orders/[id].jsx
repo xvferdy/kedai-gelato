@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Head from "next/head";
-
+import { MongoClient, ObjectId } from "mongodb";
 // react-icon
 import { BsBagCheck } from "react-icons/bs";
 
@@ -92,17 +92,36 @@ function Order({ order }) {
 
 export default Order;
 
-export const getServerSideProps = async (ctx) => {
-  const { id } = ctx.params;
+export const getServerSideProps = async (context) => {
+  const { id } = context.params;
 
-  const res = await fetch(`http://localhost:3000/api/orders/${id}`);
-  const data = await res.json();
+  const client = await MongoClient.connect(process.env.MONGODB_URI);
+  const db = client.db();
+  const orderCollection = db.collection("orders");
+  const selectedOrder = await orderCollection.findOne({
+    _id: ObjectId(id),
+  });
+
+  client.close();
+
   return {
     props: {
-      order: data,
+      order: JSON.parse(JSON.stringify(selectedOrder)),
     },
   };
 };
+
+// export const getServerSideProps = async (ctx) => {
+//   const { id } = ctx.params;
+
+//   const res = await fetch(`http://localhost:3000/api/orders/${id}`);
+//   const data = await res.json();
+//   return {
+//     props: {
+//       order: data,
+//     },
+//   };
+// };
 
 // export const getStaticPaths = async () => {
 //   const res = await fetch(`http://localhost:3000/api/orders`);
