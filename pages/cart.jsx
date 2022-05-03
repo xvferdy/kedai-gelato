@@ -67,7 +67,7 @@ function Cart() {
 
   const handleCreateOrder = async (orderData) => {
     try {
-      const res = await fetch("http://localhost:3000/api/orders", {
+      const res = await fetch("/api/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,9 +77,10 @@ function Cart() {
       const data = await res.json();
 
       if (res.status === 201) {
+        handleClose();
         console.log(data);
-        dispatch(reset());
         router.push(`/orders/${data._id}`);
+        dispatch(reset());
       }
     } catch (err) {
       console.log(err);
