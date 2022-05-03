@@ -1,19 +1,16 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Head from "next/head";
-// react-icon
+
 import { MdOutlineIcecream } from "react-icons/md";
 
-// mui
 import Badge from "@mui/material/Badge";
 import { useSnackbar } from "notistack";
 
-// redux related
 import { addProduct } from "../../redux/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-// framer
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 let easing = [0.6, -0.05, 0.01, 0.99];
 const stagger = {
@@ -63,7 +60,6 @@ function Product({ product }) {
 
   const handleAddProduct = (variant) => {
     if (quantity <= 0 || quantity.toString().includes(".")) {
-      // return alert("Error!");
       return enqueueSnackbar("Failed to add to cart", { variant });
     }
     dispatch(
@@ -147,7 +143,6 @@ function Product({ product }) {
                             color: "#141414",
                           },
                         }}
-                        // onClick={() => setPrizeSize(size.price)}
                       >
                         <MdOutlineIcecream className="size-icon" />
                       </Badge>

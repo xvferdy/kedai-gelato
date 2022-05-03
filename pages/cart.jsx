@@ -4,14 +4,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import CartItem from "../components/CartItem";
 
-// react-icon
 import { MdOutlineShoppingBasket } from "react-icons/md";
-import { BsTrash } from "react-icons/bs";
 import { FiTruck } from "react-icons/fi";
 
-// mui
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -19,12 +14,10 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 
-// redux related
 import { useSelector, useDispatch } from "react-redux";
-import { reset, removeProduct } from "../redux/cartSlice";
+import { reset } from "../redux/cartSlice";
 
-// framer
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -72,7 +65,6 @@ function Cart() {
       const data = await res.json();
 
       if (res.status === 201) {
-        // handleClose();
         console.log(data);
         router.push(`/orders/${data._id}`);
         dispatch(reset());

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Head from "next/head";
 
-// react-icon
 import { BsBagCheck } from "react-icons/bs";
 
 function Order({ order }) {
