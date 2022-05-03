@@ -35,17 +35,11 @@ function Cart() {
     address: "",
     phone: "",
   });
+  const [loadingPost, setLoadingPost] = useState(false);
   const dispatch = useDispatch();
   const cartRedux = useSelector((state) => state.cart);
   const router = useRouter();
   let dollarUSLocale = Intl.NumberFormat("en-US");
-
-  const dummy = [
-    { id: 1, task: "blejar" },
-    { id: 2, task: "game" },
-    { id: 3, task: "makan" },
-  ];
-  const [todos, setTodos] = useState(dummy);
 
   useEffect(() => {
     setCart(cartRedux);
@@ -67,7 +61,8 @@ function Cart() {
 
   const handleCreateOrder = async (orderData) => {
     try {
-      const res = await fetch("http://localhost:3000/api/orders", {
+      setLoadingPost(true);
+      const res = await fetch("/api/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,9 +72,14 @@ function Cart() {
       const data = await res.json();
 
       if (res.status === 201) {
+        // handleClose();
         console.log(data);
-        dispatch(reset());
         router.push(`/orders/${data._id}`);
+        dispatch(reset());
+      }
+      if (res.status !== 201) {
+        alert("Error");
+        setLoadingPost(false);
       }
     } catch (err) {
       console.log(err);
@@ -121,39 +121,12 @@ function Cart() {
                 />
               </>
             ) : (
-              // <>
               <AnimatePresence>
                 {cart.products?.map((product, idx) => (
                   <CartItem key={product.reduxId} product={product} idx={idx} />
                 ))}
               </AnimatePresence>
-              // </>
             )}
-
-            {/* <AnimatePresence>
-              {cart.products?.map((product, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <span>{product.title}</span>
-                  <button
-                    onClick={() =>
-                      dispatch(
-                        removeProduct({
-                          id: product.reduxId,
-                          price: product.priceTotalNonQty * product.quantity,
-                        })
-                      )
-                    }
-                  >
-                    remove
-                  </button>
-                </motion.div>
-              ))}
-            </AnimatePresence> */}
           </div>
 
           {cart.products?.length >= 1 && (
@@ -232,7 +205,10 @@ function Cart() {
                 Cancel
               </Button>
               <Button
-                sx={{ fontSize: "142.5%", fontWeight: "bold" }}
+                sx={{
+                  fontSize: "142.5%",
+                  fontWeight: "bold",
+                }}
                 onClick={() =>
                   handleCreateOrder({
                     ...orderData,
@@ -240,6 +216,7 @@ function Cart() {
                     method: 0,
                   })
                 }
+                disabled={loadingPost}
               >
                 Order Now
               </Button>
