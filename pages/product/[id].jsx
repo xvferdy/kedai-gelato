@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import { MongoClient, ObjectId } from "mongodb";
 // react-icon
 import { MdOutlineIcecream } from "react-icons/md";
 
@@ -239,76 +238,29 @@ function Product({ product }) {
 
 export default Product;
 
-// export const getStaticPaths = async () => {
-//   const res = await fetch("http://localhost:3000/api/products");
-//   const data = await res.json();
-//   const paths = data.map((product) => ({
-//     params: {
-//       id: product._id,
-//     },
-//   }));
-
-//   return {
-//     paths: paths,
-//     fallback: false,
-//   };
-// };
-
-// export const getStaticProps = async (ctx) => {
-//   const { id } = ctx.params;
-//   const res = await fetch(`http://localhost:3000/api/products/${id}`);
-
-//   const data = await res.json();
-//   return {
-//     props: {
-//       product: data,
-//     },
-//   };
-// };
-
-// export const getServerSideProps = async (ctx) => {
-//   const { id } = ctx.params;
-//   const res = await fetch(`http://localhost:3000/api/products/${id}`);
-//   const data = await res.json();
-
-//   return {
-//     props: {
-//       product: data,
-//     },
-//   };
-// };
-
 export const getStaticPaths = async () => {
-  const client = await MongoClient.connect(process.env.MONGODB_URI);
-  const db = client.db();
-  const productCollection = db.collection("products");
-  const products = await productCollection.find({}, { _id: 1 }).toArray();
-
-  client.close();
+  const res = await fetch("https://kedai-gelato.vercel.app/api/products");
+  const data = await res.json();
+  const paths = data.map((product) => ({
+    params: {
+      id: product._id,
+    },
+  }));
 
   return {
-    paths: products.map((product) => ({
-      params: { id: product._id.toString() },
-    })),
-    fallback: "blocking", //
+    paths: paths,
+    fallback: false,
   };
 };
 
-export const getStaticProps = async (context) => {
-  const { id } = context.params;
+export const getStaticProps = async (ctx) => {
+  const { id } = ctx.params;
+  const res = await fetch(`https://kedai-gelato.vercel.app/api/products/${id}`);
 
-  const client = await MongoClient.connect(process.env.MONGODB_URI);
-  const db = client.db();
-  const productCollection = db.collection("products");
-  const selectedProduct = await productCollection.findOne({
-    _id: ObjectId(id),
-  });
-  console.log(selectedProduct);
-  client.close();
-
+  const data = await res.json();
   return {
     props: {
-      product: JSON.parse(JSON.stringify(selectedProduct)),
+      product: data,
     },
   };
 };

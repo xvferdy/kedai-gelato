@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
-import { MongoClient } from "mongodb";
+
 // framer
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 function OrderList({ orders }) {
@@ -84,28 +84,13 @@ function OrderList({ orders }) {
 
 export default OrderList;
 
-// export const getStaticProps = async (ctx) => {
-//   const res = await fetch("http://localhost:3000/api/orders");
-//   const data = await res.json();
-
-//   return {
-//     props: {
-//       orders: data,
-//     },
-//   };
-// };
-
 export const getStaticProps = async (ctx) => {
-  const client = await MongoClient.connect(process.env.MONGODB_URI);
-  const db = client.db();
-  const orderCollection = db.collection("orders");
-  const orders = await orderCollection.find().toArray();
-
-  client.close();
+  const res = await fetch("https://kedai-gelato.vercel.app/api/orders");
+  const data = await res.json();
 
   return {
     props: {
-      orders: JSON.parse(JSON.stringify(orders)),
+      orders: data,
     },
   };
 };

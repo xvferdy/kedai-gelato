@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Head from "next/head";
-import { MongoClient, ObjectId } from "mongodb";
+
 // react-icon
 import { BsBagCheck } from "react-icons/bs";
 
@@ -92,60 +92,14 @@ function Order({ order }) {
 
 export default Order;
 
-export const getServerSideProps = async (context) => {
-  const { id } = context.params;
+export const getServerSideProps = async (ctx) => {
+  const { id } = ctx.params;
 
-  const client = await MongoClient.connect(process.env.MONGODB_URI);
-  const db = client.db();
-  const orderCollection = db.collection("orders");
-  const selectedOrder = await orderCollection.findOne({
-    _id: ObjectId(id),
-  });
-
-  client.close();
-
+  const res = await fetch(`https://kedai-gelato.vercel.app/api/orders/${id}`);
+  const data = await res.json();
   return {
     props: {
-      order: JSON.parse(JSON.stringify(selectedOrder)),
+      order: data,
     },
   };
 };
-
-// export const getServerSideProps = async (ctx) => {
-//   const { id } = ctx.params;
-
-//   const res = await fetch(`http://localhost:3000/api/orders/${id}`);
-//   const data = await res.json();
-//   return {
-//     props: {
-//       order: data,
-//     },
-//   };
-// };
-
-// export const getStaticPaths = async () => {
-//   const res = await fetch(`http://localhost:3000/api/orders`);
-//   const data = await res.json();
-//   const paths = data.map((order) => ({
-//     params: {
-//       id: order._id,
-//     },
-//   }));
-//   return {
-//     paths: paths,
-//     fallback: false,
-//   };
-// };
-
-// export const getStaticProps = async (ctx) => {
-//   const { id } = ctx.params;
-
-//   const res = await fetch(`http://localhost:3000/api/orders/${id}`);
-//   const data = await res.json();
-
-//   return {
-//     props: {
-//       order: data,
-//     },
-//   };
-// };
