@@ -76,8 +76,8 @@ function Cart() {
       });
       const data = await res.json();
 
+      handleClose();
       if (res.status === 201) {
-        handleClose();
         console.log(data);
         router.push(`/orders/${data._id}`);
         dispatch(reset());
