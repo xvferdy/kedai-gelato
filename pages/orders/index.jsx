@@ -93,5 +93,6 @@ export const getStaticProps = async (ctx) => {
     props: {
       orders: data,
     },
+    revalidate: 1,
   };
 };
