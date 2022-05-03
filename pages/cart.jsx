@@ -66,6 +66,7 @@ function Cart() {
   console.log(cart);
 
   const handleCreateOrder = async (orderData) => {
+    handleClose();
     try {
       const res = await fetch("/api/orders", {
         method: "POST",
@@ -76,7 +77,6 @@ function Cart() {
       });
       const data = await res.json();
 
-      handleClose();
       if (res.status === 201) {
         console.log(data);
         router.push(`/orders/${data._id}`);
