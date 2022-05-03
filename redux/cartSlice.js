@@ -15,14 +15,9 @@ export const cartSlice = createSlice({
       state.totalQuantity += 1;
     },
     removeProduct: (state, action) => {
-      for (var i = 0; i < state.products.length; i++) {
-        if (state.products[i].reduxId === action.payload.id) {
-          state.products.splice(i, 1);
-        }
-      }
-      // state.products = state.products.filter(
-      //   (product) => product.reduxId !== action.payload.id
-      // );
+      state.products = state.products.filter(
+        (product) => product.reduxId !== action.payload.id
+      );
       state.totalPrice -= action.payload.price;
       state.totalQuantity -= 1;
     },

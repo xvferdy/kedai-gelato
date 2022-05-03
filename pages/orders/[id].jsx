@@ -1,14 +1,12 @@
 import Image from "next/image";
 import Head from "next/head";
 
-// react-icon
 import { BsBagCheck } from "react-icons/bs";
 
 function Order({ order }) {
   const progressInfo = ["payment", "preparing", "on the way", "delivered"];
   let dollarUSLocale = Intl.NumberFormat("en-US");
   let status = order.status; // (0 - 3)
-  console.log(order);
   const orderProgression = (progress) => {
     if (progress - status < 1) return "done";
     if (progress - status === 1) return "inProgress";
@@ -92,11 +90,23 @@ function Order({ order }) {
 
 export default Order;
 
-export const getServerSideProps = async (ctx) => {
-  const { id } = ctx.params;
+export const getStaticPaths = async () => {
+  const res = await fetch(`https://kedai-gelato.vercel.app/api/orders`);
+  const data = await res.json();
+  const paths = data.map((order) => ({
+    params: { id: order._id },
+  }));
+  return {
+    paths: paths,
+    fallback: "blocking",
+  };
+};
 
+export const getStaticProps = async (ctx) => {
+  const { id } = ctx.params;
   const res = await fetch(`https://kedai-gelato.vercel.app/api/orders/${id}`);
   const data = await res.json();
+
   return {
     props: {
       order: data,

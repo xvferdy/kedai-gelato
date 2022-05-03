@@ -1,18 +1,14 @@
 import Image from "next/image";
 
-// mui
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 
-// redux related
-import { useSelector, useDispatch } from "react-redux";
-import { reset, removeProduct } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
+import { removeProduct } from "../redux/cartSlice";
 
-// react-icon
 import { BsTrash } from "react-icons/bs";
 
-// framer
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { motion } from "framer-motion";
 function CartItem({ product, idx }) {
   const dispatch = useDispatch();
   let dollarUSLocale = Intl.NumberFormat("en-US");
@@ -37,7 +33,6 @@ function CartItem({ product, idx }) {
         },
       }}
     >
-      {console.log("render item wit id: " + idx)}
       <div className="item-image">
         <Image src={product.img} width={100} height={140} alt={product.title} />
       </div>

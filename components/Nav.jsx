@@ -3,17 +3,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-// mui
 import Badge from "@mui/material/Badge";
 
-// react-icon
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-// redux related
 import { useSelector } from "react-redux";
-
-// framer
-import { motion, AnimatePresence } from "framer-motion";
 
 function Nav() {
   const [clientQty, setClientQty] = useState(0);

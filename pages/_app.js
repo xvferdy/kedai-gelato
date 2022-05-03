@@ -1,7 +1,6 @@
 import Layout from "../hoc/Layout";
 import "../styles/scss/main.scss";
 
-// redux related
 import store from "../redux/store";
 import { Provider } from "react-redux";
 import { saveState } from "../redux/localStorage";
@@ -16,7 +15,7 @@ store.subscribe(
   }, 800)
 );
 
-function MyApp({ Component, pageProps, router }) {
+function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <Layout>

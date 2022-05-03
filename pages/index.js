@@ -2,8 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-// framer
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const stagger = {
   visible: {
