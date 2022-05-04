@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Head from "next/head";
-
 import { BsBagCheck } from "react-icons/bs";
 
 function Order({ order }) {
@@ -111,5 +110,6 @@ export const getStaticProps = async (ctx) => {
     props: {
       order: data,
     },
+    revalidate: 1,
   };
 };

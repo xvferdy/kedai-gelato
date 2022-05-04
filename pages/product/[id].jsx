@@ -1,40 +1,13 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Head from "next/head";
-
 import { MdOutlineIcecream } from "react-icons/md";
-
 import Badge from "@mui/material/Badge";
 import { useSnackbar } from "notistack";
-
 import { addProduct } from "../../redux/cartSlice";
 import { useSelector, useDispatch } from "react-redux";
-
 import { motion } from "framer-motion";
-
-let easing = [0.6, -0.05, 0.01, 0.99];
-const stagger = {
-  visible: {
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-const fadeInUp = {
-  hidden: {
-    y: 60,
-    opacity: 0,
-    transition: { duration: 0.6, ease: easing },
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-};
+import { stagger, fadeInUp, imgSlide } from "../../utils/motion";
 
 function Product({ product }) {
   const [prizeSize, setPrizeSize] = useState(product.prices[0].price);
@@ -90,14 +63,13 @@ function Product({ product }) {
           {/* <h2>Product Details</h2> */}
         </div>
         <div className="container product__container">
-          <motion.div
-            className="product__showcase"
-            animate={{ x: 0, opacity: 1 }}
-            initial={{ x: -200, opacity: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <Image src={product.img} width={500} height={700} alt="name" />
+          <motion.div className="product__showcase" variants={imgSlide}>
+            <Image
+              src={product.img}
+              width={500}
+              height={700}
+              alt={product.title}
+            />
           </motion.div>
           <motion.div className="product__details" variants={stagger}>
             <motion.h2 className="product__details-name" variants={fadeInUp}>

@@ -7,8 +7,9 @@ import { useDispatch } from "react-redux";
 import { removeProduct } from "../redux/cartSlice";
 
 import { BsTrash } from "react-icons/bs";
-
 import { motion } from "framer-motion";
+import { fadeDownCart } from "../utils/motion";
+
 function CartItem({ product, idx }) {
   const dispatch = useDispatch();
   let dollarUSLocale = Intl.NumberFormat("en-US");
@@ -17,21 +18,8 @@ function CartItem({ product, idx }) {
       className="cart__details-item"
       initial="hidden"
       animate="visible"
-      exit="removed"
-      variants={{
-        hidden: { opacity: 0, y: -50 * idx },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            delay: 0.2,
-          },
-        },
-        removed: {
-          opacity: 0,
-          x: -100,
-        },
-      }}
+      exit="exit"
+      variants={fadeDownCart(idx)}
     >
       <div className="item-image">
         <Image src={product.img} width={100} height={140} alt={product.title} />

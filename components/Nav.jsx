@@ -2,11 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-
 import Badge from "@mui/material/Badge";
-
 import { AiOutlineShoppingCart } from "react-icons/ai";
-
 import { useSelector } from "react-redux";
 
 function Nav() {

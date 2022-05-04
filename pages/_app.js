@@ -1,11 +1,9 @@
 import Layout from "../hoc/Layout";
 import "../styles/scss/main.scss";
-
 import store from "../redux/store";
 import { Provider } from "react-redux";
 import { saveState } from "../redux/localStorage";
 import { debounce } from "debounce";
-
 import { SnackbarProvider } from "notistack";
 import NextNProgress from "nextjs-progressbar";
 
