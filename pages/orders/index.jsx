@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
-
 import { motion } from "framer-motion";
+import { fadeDownOrders } from "../../utils/motion";
 function OrderList({ orders }) {
   let dollarUSLocale = Intl.NumberFormat("en-US");
   return (
@@ -12,7 +12,12 @@ function OrderList({ orders }) {
         <link rel="icon" href="/favicon2.ico" />
       </Head>
 
-      <section className="order-list">
+      <motion.section
+        className="order-list"
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
         <div className="title">
           <p>Thank you for Ordering our Product</p>
           <h2>List of Cool customers</h2>
@@ -34,24 +39,7 @@ function OrderList({ orders }) {
                     >
                       <motion.a
                         className="order-list__details-header"
-                        initial="hidden"
-                        animate="visible"
-                        exit="removed"
-                        variants={{
-                          hidden: { opacity: 0, y: -50 * idx },
-                          visible: {
-                            opacity: 1,
-                            y: 0,
-                            transition: {
-                              duration: 0.2,
-                              delay: 0.1,
-                            },
-                          },
-                          removed: {
-                            opacity: 0,
-                            x: -100,
-                          },
-                        }}
+                        variants={fadeDownOrders(idx)}
                       >
                         <div>
                           <small>Customer</small>
@@ -76,7 +64,7 @@ function OrderList({ orders }) {
             <p>Click the order section for more informations</p>
           </div>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }

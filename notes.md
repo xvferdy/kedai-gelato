@@ -32,6 +32,7 @@
 - [x] no cart list ui
 - [x] no order ui
 - [ ] periksa orders/safsdf apakah 404 saat sdh deploy
+- [x] order status not change if using statickpath
 
 **Optional**
 - [ ] drop shadow product, cart, product, ect

@@ -1,32 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-
+import { stagger, fadeInUp } from "../utils/motion";
 import { motion } from "framer-motion";
-
-const stagger = {
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-let easing = [0.6, -0.05, 0.01, 0.99];
-const fadeInUp = {
-  hidden: {
-    y: 60,
-    opacity: 0,
-    transition: { duration: 0.6, ease: easing },
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-};
 
 export default function Home({ products }) {
   return (

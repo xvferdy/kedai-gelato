@@ -3,21 +3,17 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import CartItem from "../components/CartItem";
-
 import { MdOutlineShoppingBasket } from "react-icons/md";
 import { FiTruck } from "react-icons/fi";
-
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
-
 import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../redux/cartSlice";
-
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -82,7 +78,7 @@ function Cart() {
         <meta name="keyword" content="Ice Cream, Gelato, Kedai" />
         <link rel="icon" href="/favicon2.ico" />
       </Head>
-      <motion.section className="cart">
+      <section className="cart">
         <div className="title">
           {/* <p>details</p>
         <h2>cart page</h2> */}
@@ -129,18 +125,18 @@ function Cart() {
               </button>
 
               {cod && (
-                <AnimatePresence exitBeforeEnter>
-                  <motion.button
+                <>
+                  <button
                     className="btn btn--primary"
                     onClick={handleClickOpen}
                   >
                     Cash On Delivery <FiTruck className="icon" />
-                  </motion.button>
-                  <button type="button" disabled>
+                  </button>
+                  <span type="button" disabled>
                     powered by J&T Express.
                     <FiTruck className="icon" />
-                  </button>
-                </AnimatePresence>
+                  </span>
+                </>
               )}
             </div>
           )}
@@ -212,7 +208,7 @@ function Cart() {
             </DialogActions>
           </Dialog>
         </div>
-      </motion.section>
+      </section>
     </>
   );
 }
