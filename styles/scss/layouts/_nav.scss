@@ -41,6 +41,9 @@
     &--active {
       a {
         color: $color-background;
+        &:hover {
+          color: $color-primary-variant;
+        }
       }
     }
   }
